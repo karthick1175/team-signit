@@ -6,6 +6,8 @@
 <title>Team Signit — Signage and Portable Cabins, Bengaluru</title>
 <meta name="description" content="Team Signit makes building, pylon, reception, internal, wall graphics, project, parking, fire exit and braille signage, plus portable office cabins, in Bengaluru.">
 <link rel="icon" href="assets/favicon.png">
+<script>(function(d){d.classList.add('js');var seen=false;try{seen=sessionStorage.getItem('ts-intro')==='1'}catch(e){}
+if(!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro');})(document.documentElement)</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -68,7 +70,18 @@ section{padding:88px 0}
 .btn.accent{background:var(--accent);color:#FBF6EA}
 .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
 .btn svg{width:18px;height:18px}
-@media (max-width:860px){.top nav{display:none}}
+.top .mnav{display:none}
+@media (max-width:860px){
+  .top nav:not(.mnav){display:none}
+  .top .wrap{height:60px}
+  .top img{height:40px}
+  .top .btn{padding:9px 14px;font-size:13.5px}
+  .top .mnav{display:flex;gap:8px;overflow-x:auto;padding:0 16px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .mnav::-webkit-scrollbar{display:none}
+  .mnav a{flex:0 0 auto;text-decoration:none;font-size:14px;font-weight:500;padding:7px 14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px}
+  .top .mnav a.on,.top .mnav a.on:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  html{scroll-padding-top:calc(112px + env(safe-area-inset-top,0px))}
+}
 
 /* ---------- Photo frame (changes per style) ---------- */
 .ph{position:relative;overflow:hidden;background:var(--alt);border:var(--frame) solid var(--frame-col);box-shadow:var(--shadow);border-radius:var(--tile-radius)}
@@ -115,6 +128,7 @@ button.ph:hover img{transform:scale(1.04)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .chip[aria-pressed="true"] small{color:inherit;opacity:.7}
 .masonry{columns:4 260px;column-gap:var(--gap)}
+@media (max-width:600px){.masonry{columns:2;column-gap:8px}.masonry .ph{margin-bottom:8px}.filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-24px;padding-right:24px}.filters::-webkit-scrollbar{display:none}.chip{flex:0 0 auto}section{padding:56px 0}}
 .masonry .ph{margin-bottom:var(--gap);break-inside:avoid}
 .masonry .ph img{height:auto}
 .more{display:flex;justify-content:center;margin-top:30px}
@@ -131,13 +145,18 @@ button.ph:hover img{transform:scale(1.04)}
 .svc h3 small{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:var(--accent);white-space:nowrap}
 .svc p{font-size:14.5px;color:var(--muted)}
 @media (max-width:900px){.svc-grid{grid-template-columns:1fr 1fr}}
-@media (max-width:540px){.svc-grid{grid-template-columns:1fr}}
+@media (max-width:540px){.svc-grid{grid-template-columns:1fr 1fr;gap:10px}.svc .body{padding:10px 12px 12px}.svc h3{font-size:16px;flex-direction:column;gap:2px}.svc p{display:none}}
 
 /* ---------- Cabins ---------- */
 .cabins{background:var(--ink);color:#F2E7CE}
 .cabins .lead,.cabins .muted{color:#C9BC9E}
 .cabins .tag{color:#E0A277}
 [data-theme="heritage"] .cabins .tag{border-color:#E0A277;outline-color:#E0A277}
+.cab-project{display:flex;flex-wrap:wrap;gap:14px 40px;align-items:end;justify-content:space-between;border-top:1px solid rgba(242,231,206,.2);padding:22px 0 24px}
+.cab-project small{color:#E0A277;font-size:13px;font-weight:600}
+.cab-project h3{font-size:clamp(20px,2.2vw,26px);color:#FBF6EA;margin-top:4px}
+.cab-project ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;color:#C9BC9E;font-size:14.5px}
+.cab-project b{color:#FBF6EA;font-family:'Fraunces',serif;font-size:18px}
 .cab-gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:var(--gap);margin-bottom:48px}
 .cab-gallery .ph{border-color:#3a3124}
 .cab-gallery .ph:nth-child(1){grid-column:span 2;grid-row:span 2}
@@ -155,7 +174,7 @@ button.ph:hover img{transform:scale(1.04)}
 .cab-foot p{flex:1 1 280px;font-size:14.5px}
 @media (max-width:1000px){.cab-specs{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:700px){.cab-gallery{grid-template-columns:1fr 1fr;grid-auto-rows:140px}.cab-gallery .ph:nth-child(6){grid-column:span 1}.cab-specs{grid-template-columns:1fr 1fr}}
-@media (max-width:440px){.cab-specs{grid-template-columns:1fr}}
+@media (max-width:440px){.cab-specs{gap:20px 16px}.cab-specs li{font-size:13.5px}}
 
 /* ---------- Materials, clients, about ---------- */
 .mat{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
@@ -192,7 +211,8 @@ button.ph:hover img{transform:scale(1.04)}
 .details small{display:block;color:var(--muted);font-size:13px}
 .details a,.details p{font-size:18px;text-decoration:none;font-family:'Fraunces',serif}
 @media (max-width:800px){.ct-grid{grid-template-columns:1fr;gap:36px}}
-footer{padding:28px 0 90px;font-size:13.5px;color:var(--muted)}
+footer{padding:0 0 30px;font-size:13.5px;color:var(--muted)}
+footer .band{background:#4A3222;color:#F2E7CE;padding:14px 0;margin-bottom:22px;font-weight:500;font-size:14.5px}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 /* ---------- Lightbox ---------- */
@@ -206,18 +226,166 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .lb .pv{left:16px;top:50%;translate:0 -50%}
 .lb .nx{right:16px;top:50%;translate:0 -50%}
 
-/* ---------- Style picker (for review only) ---------- */
-.picker{position:fixed;left:50%;translate:-50% 0;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:60;background:#2B2419;color:#F2E7CE;border-radius:99px;padding:6px;display:flex;gap:4px;align-items:center;box-shadow:0 8px 30px rgba(0,0,0,.3);font-size:13.5px;max-width:calc(100vw - 20px);overflow-x:auto}
-.picker b{padding:0 10px 0 12px;font-weight:600;white-space:nowrap}
-.picker button{background:transparent;border:none;color:#D9CDB0;padding:8px 13px;border-radius:99px;white-space:nowrap;display:flex;gap:7px;align-items:center}
-.picker button i{width:12px;height:12px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.4)}
-.picker button[aria-pressed="true"]{background:#F2E7CE;color:#2B2419}
-.wa-float{position:fixed;right:18px;bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:50;width:54px;height:54px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.wa-float{position:fixed;right:18px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:50;width:54px;height:54px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.25)}
 .wa-float svg{width:28px;height:28px;fill:#fff}
+
+/* =================== Motion & graphics =================== */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);z-index:90;pointer-events:none}
+.top .wrap{transition:height .35s ease}
+.top img{transition:height .35s ease}
+.top.scrolled{box-shadow:0 6px 20px -12px rgba(43,36,25,.45)}
+@media (min-width:861px){.top.scrolled .wrap{height:60px}.top.scrolled img{height:42px}}
+.btn{transition:transform .25s ease, box-shadow .25s ease, background-color .25s ease, color .25s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px -8px rgba(43,36,25,.55)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+
+/* scroll reveal */
+html.js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
+html.js .rv.in{opacity:1;transform:none}
+html.js .stag > *{opacity:0;transform:translateY(20px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 70ms)}
+html.js .stag.in > *{opacity:1;transform:none}
+
+/* hero headline */
+html.js .hero h1 .w{display:inline-block;animation:wordIn .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i) * 90ms + 150ms)}
+@keyframes wordIn{from{opacity:0;transform:translateY(.45em) rotate(2deg)}to{opacity:1;transform:none}}
+html.js .mosaic .ph{animation:popIn .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i) * 110ms + 350ms)}
+@keyframes popIn{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.mosaic .ph img{position:absolute;inset:0;height:100%;opacity:0;transition:opacity 1.1s ease, transform .5s ease}
+.mosaic .ph img.on{opacity:1}
+.mosaic .ph:first-child img.on{animation:kenburns 7s ease-out both}
+@keyframes kenburns{from{transform:scale(1.001)}to{transform:scale(1.09)}}
+.mosaic .cap{transition:opacity .4s}
+
+/* day / night switch */
+.hero{transition:background-color .9s ease, color .9s ease;position:relative}
+.lights{margin-top:26px;display:inline-flex;align-items:center;gap:12px;background:transparent;border:none;padding:0;font-size:14.5px;font-weight:600;color:var(--ink)}
+.lights .sw{position:relative;width:54px;height:30px;border-radius:99px;background:var(--line);transition:background .5s;flex:none}
+.lights .sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#FBF6EA;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:transform .45s cubic-bezier(.3,1.4,.5,1), background .5s}
+.lights .sw::before{content:"";position:absolute;inset:-6px;border-radius:99px;border:2px solid var(--accent);opacity:0;animation:hint 2.2s ease-out 2.4s 3}
+@keyframes hint{0%{opacity:.8;transform:scale(.92)}100%{opacity:0;transform:scale(1.18)}}
+.hero.night{background:radial-gradient(ellipse at 70% 30%,#3a2a1b 0%,#1a140e 60%) #1a140e;color:#F2E7CE}
+.hero.night h1{color:#FFF1D8;text-shadow:0 0 14px rgba(255,190,110,.55),0 0 38px rgba(255,140,50,.35);animation:flickerOn 1.1s steps(1,end) both}
+@keyframes flickerOn{0%{opacity:.35}8%{opacity:1}14%{opacity:.4}22%{opacity:1}30%{opacity:.6}38%,100%{opacity:1}}
+.hero.night .lead{color:#CDBF9F}
+.hero.night .tag{color:#F2A76A}
+.hero.night .btn{background:#F2E7CE;color:#1a140e}
+.hero.night .btn.ghost{background:transparent;color:#F2E7CE;border-color:#F2E7CE}
+.hero.night .lights{color:#F2E7CE}
+.hero.night .lights .sw{background:#E0873F}
+.hero.night .lights .sw::after{transform:translateX(24px);background:#FFF4DC;box-shadow:0 0 14px 4px rgba(255,190,100,.7)}
+.hero.night .ph{border-color:#2d241a}
+.hero.night .stats{border-color:rgba(242,231,206,.18)}
+.hero.night .stats div{border-color:rgba(242,231,206,.18)}
+.hero.night .stats b{color:#F6B571;text-shadow:0 0 16px rgba(255,160,70,.45)}
+.hero.night .stats span{color:#BFB292}
+
+/* torn paper edges around the dark cabins band */
+.cabins{position:relative}
+.cabins::before,.cabins::after{content:"";position:absolute;left:0;right:0;height:20px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 20' preserveAspectRatio='none'%3E%3Cpath fill='%232B2419' d='M0 20 L0 6.9 L11 10.8 L20 9.4 L35 3.7 L52 3.4 L68 3.8 L77 8.1 L100 4.5 L112 10.5 L137 9.9 L152 14.7 L161 13.3 L174 4.7 L184 6.7 L207 5.2 L226 10.7 L240 9.6 L249 3.7 L261 11.2 L277 6.8 L295 8.4 L309 12.5 L329 5.9 L348 9.3 L371 11.8 L385 14.8 L395 8.0 L416 4.8 L433 3.5 L453 12.2 L472 13.5 L485 11.3 L504 10.0 L520 13.1 L545 8.7 L565 3.7 L586 10.8 L612 12.9 L625 7.6 L645 3.3 L661 5.0 L671 3.7 L693 4.6 L705 7.7 L729 4.0 L745 9.6 L769 12.8 L793 6.3 L808 7.3 L832 14.5 L843 5.1 L855 5.8 L872 10.1 L884 3.0 L900 7.4 L918 14.4 L939 9.2 L958 11.1 L967 13.8 L989 13.5 L1011 7.7 L1026 4.2 L1046 3.7 L1055 5.5 L1066 7.1 L1075 3.0 L1085 4.2 L1100 3.3 L1124 10.4 L1134 6.0 L1149 7.4 L1159 13.2 L1185 8.6 L1200 9.0 L1200 20 Z'/%3E%3C/svg%3E") repeat-x;background-size:1200px 20px;pointer-events:none}
+.cabins::before{top:-19px}
+.cabins::after{bottom:-19px;transform:scaleY(-1)}
+
+/* icons */
+.ico{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.svc .body{position:relative}
+.svc .body .ico{position:absolute;right:14px;top:-22px;width:44px;height:44px;padding:9px;border-radius:50%;background:var(--ink);color:#F2E7CE;box-shadow:0 4px 12px -4px rgba(0,0,0,.5);transition:transform .5s cubic-bezier(.3,1.4,.5,1), background .3s}
+.svc:hover .body .ico{transform:rotate(-12deg) scale(1.08);background:var(--accent)}
+.svc h3{padding-right:40px}
+.svc{transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s}
+html.js .stag.in > .svc:hover,.svc:hover{transform:translateY(-5px);box-shadow:0 16px 30px -14px rgba(43,36,25,.5)}
+.svc .img{position:relative}
+.svc .img img{position:absolute;inset:0;opacity:0;transition:opacity .6s ease, transform .5s}
+.svc .img img.on{opacity:1}
+.mat .ico{width:40px;height:40px;color:var(--accent);margin-bottom:12px;transition:transform .5s cubic-bezier(.3,1.4,.5,1)}
+.mat div:hover .ico{transform:translateY(-4px) rotate(-6deg)}
+@media (max-width:540px){.svc .body .ico{width:36px;height:36px;padding:7px;top:-18px;right:10px}.svc h3{padding-right:0}}
+
+/* cabin build process */
+.process{margin:8px 0 52px}
+.process h3.pt{font-size:22px;color:#FBF6EA;margin-bottom:26px}
+.process ol{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+.process ol::before{content:"";position:absolute;top:27px;left:28px;right:28px;height:2px;background:linear-gradient(90deg,#E0A277,#E0A277 60%,rgba(224,162,119,.3));transform-origin:0 50%;transform:scaleX(0);transition:transform 1.6s cubic-bezier(.5,0,.2,1) .2s}
+.process.in ol::before{transform:scaleX(1)}
+.process li{position:relative;z-index:1}
+.process li .dot{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#2B2419;border:2px solid #E0A277;color:#F2E7CE;margin-bottom:16px;transition:background .4s, transform .5s cubic-bezier(.3,1.4,.5,1)}
+.process li:hover .dot{background:#E0A277;color:#2B2419;transform:scale(1.08)}
+.process li small{display:block;color:#E0A277;font-weight:600;font-size:12.5px;margin-bottom:4px}
+.process li b{display:block;font-family:'Fraunces',serif;font-size:18px;color:#FBF6EA;font-weight:600;margin-bottom:6px}
+.process li span{font-size:14px;color:#C9BC9E}
+@media (max-width:800px){.process ol{grid-template-columns:1fr;gap:22px}.process ol::before{top:28px;bottom:28px;left:27px;right:auto;width:2px;height:auto;transform-origin:50% 0;transform:scaleY(0);background:#E0A277}.process.in ol::before{transform:scaleY(1)}.process li{display:grid;grid-template-columns:56px 1fr;column-gap:16px}.process li .dot{grid-row:span 3;margin:0}}
+
+/* client marquee */
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee .track{display:flex;align-items:center;gap:38px;width:max-content;animation:marq 40s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.marquee span{font-family:'Fraunces',serif;font-size:clamp(24px,3vw,36px);font-weight:600;white-space:nowrap;color:var(--ink)}
+.marquee span:nth-of-type(even){color:var(--muted)}
+.marquee i{width:10px;height:10px;background:var(--accent);transform:rotate(45deg);flex:none;display:block}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* gallery + lightbox transitions */
+.masonry .ph.nw{animation:tileIn .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 40ms)}
+@keyframes tileIn{from{opacity:0;transform:translateY(22px) scale(.98)}}
+.chip{transition:background-color .25s, color .25s, border-color .25s, transform .2s}
+.chip:hover{transform:translateY(-1px)}
+.lb{display:flex;opacity:0;visibility:hidden;transition:opacity .35s ease, visibility .35s}
+.lb.open{opacity:1;visibility:visible}
+.lb img{transform:scale(.95);transition:transform .45s cubic-bezier(.2,.7,.2,1), opacity .3s ease}
+.lb.open img{transform:none}
+.lb img.swap{opacity:0}
+.cab-gallery .ph img,.latest-grid .ph img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.cab-gallery .ph:hover img,.latest-grid .ph:hover img{transform:scale(1.06)}
+
+@media (prefers-reduced-motion:reduce){
+  html.js .rv,html.js .stag > *{opacity:1!important;transform:none!important}
+  .marquee .track{animation:none!important;flex-wrap:wrap;width:auto}
+  .process ol::before{transform:none!important}
+}
+
+/* =================== Workshop shutter intro =================== */
+.shutter{position:fixed;inset:0;z-index:200;pointer-events:auto;display:none}
+html.js.intro .shutter{display:block}
+html.js.intro body{overflow:hidden}
+.shutter .door{position:absolute;inset:0;overflow:hidden;will-change:transform;
+  background:
+    repeating-linear-gradient(180deg,
+      #9aa1a6 0px,#c9ced1 3px,#aeb4b8 9px,#8c9398 16px,#6f767b 21px,#5b6166 23px,#a3aaae 24px);
+  box-shadow:inset 0 -30px 60px rgba(0,0,0,.35), inset 0 40px 70px rgba(0,0,0,.25)}
+.shutter .door::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.28),transparent 18%,transparent 82%,rgba(0,0,0,.28)),radial-gradient(ellipse at 50% 40%,rgba(255,255,255,.18),transparent 60%)}
+.shutter .door::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34px;background:linear-gradient(#4a4f53,#2f3336);border-top:2px solid #b9bfc2}
+.shutter .handle{position:absolute;left:50%;bottom:10px;width:120px;height:12px;margin-left:-60px;border-radius:6px;background:linear-gradient(#e2e6e8,#8f969a);box-shadow:0 2px 3px rgba(0,0,0,.5);z-index:2}
+.shutter .plate{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);z-index:2;text-align:center;
+  background:#F2E7CE url('assets/paper.png');background-size:600px 340px;padding:26px 38px 20px;border-radius:3px;
+  box-shadow:0 14px 40px rgba(0,0,0,.45), inset 0 0 0 1px rgba(43,36,25,.25)}
+.shutter .plate::before,.shutter .plate::after{content:"";position:absolute;top:10px;width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#eee,#777)}
+.shutter .plate::before{left:10px}.shutter .plate::after{right:10px}
+.shutter .plate img{width:150px;height:auto;margin:0 auto 10px}
+.shutter .plate p{font-family:'Fraunces',serif;font-size:15px;color:#2B2419;font-weight:600;letter-spacing:.01em}
+.shutter .plate small{display:block;margin-top:6px;font-size:12.5px;color:#6E6450}
+.shutter .spill{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(0deg,rgba(255,196,120,.0),rgba(255,176,90,.55));filter:blur(6px);z-index:1}
+.shutter .skip{position:absolute;right:18px;top:calc(18px + env(safe-area-inset-top,0px));z-index:3;background:rgba(20,16,10,.55);color:#F2E7CE;border:1px solid rgba(242,231,206,.35);padding:8px 14px;border-radius:99px;font-size:13px;font-weight:600}
+.shutter .skip:hover{background:rgba(20,16,10,.8)}
+/* sequence */
+.shutter.go .door{animation:rattle .5s ease-in-out, rollUp 1.7s cubic-bezier(.75,0,.25,1) .5s forwards}
+.shutter.go .spill{animation:spill 1.7s ease .5s forwards}
+.shutter.go .skip{opacity:0;transition:opacity .3s}
+@keyframes rattle{0%,100%{transform:translateY(0)}20%{transform:translateY(-6px)}40%{transform:translateY(2px)}60%{transform:translateY(-4px)}80%{transform:translateY(1px)}}
+@keyframes rollUp{0%{transform:translateY(0)}100%{transform:translateY(-102%)}}
+@keyframes spill{0%{height:0;opacity:0}30%{opacity:1}100%{height:100%;opacity:0}}
+.shutter.done{display:none!important}
+/* signs switch on behind the shutter */
+.hero.boot .mosaic .ph img.on{animation:signOn 1.4s steps(1,end) both}
+@keyframes signOn{0%{filter:brightness(.25)}12%{filter:brightness(1.1)}18%{filter:brightness(.35)}28%{filter:brightness(1)}36%{filter:brightness(.55)}46%,100%{filter:brightness(1)}}
+@media (prefers-reduced-motion:reduce){.shutter{display:none!important}}
 </style>
 </head>
 <body>
 
+<div class="shutter" id="shutter" aria-hidden="true">
+  <div class="door"><div class="plate"><img src="assets/logo.png" alt=""><p>Signage &amp; portable cabins</p><small>Bengaluru · 32 years</small></div><div class="spill"></div><div class="handle"></div></div>
+  <button class="skip" id="skipIntro" tabindex="-1">Skip</button>
+</div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <header class="top">
   <div class="wrap">
     <a href="#top" aria-label="Team Signit home"><img src="assets/logo.png" alt="Team Signit" width="75" height="44"></a>
@@ -226,10 +394,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     </nav>
     <a class="btn accent" href="#contact">Get a quote</a>
   </div>
+  <nav class="mnav" aria-label="Sections">
+    <a href="#work">Our work</a><a href="#services">Signage</a><a href="#cabins">Cabins</a><a href="#latest">Latest</a><a href="#clients">Clients</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </nav>
 </header>
 
 <main id="top">
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="wrap">
       <div class="hero-grid">
         <div>
@@ -240,14 +411,15 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
             <a class="btn" href="#work">See all 160 photos</a>
             <a class="btn ghost" href="#contact">Talk to us</a>
           </div>
+          <button class="lights" id="lights" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span class="lbl">See our signs at night</span></button>
         </div>
         <div class="mosaic" id="mosaic"></div>
       </div>
       <div class="stats">
-        <div><b>32</b><span>years in the trade</span></div>
-        <div><b>160+</b><span>real installation photos</span></div>
-        <div><b>9</b><span>signage types, made in-house</span></div>
-        <div><b>9</b><span>enterprise clients like Infosys and Embassy</span></div>
+        <div><b data-to="32">32</b><span>years in the trade</span></div>
+        <div><b data-to="160" data-suf="+">160+</b><span>real installation photos</span></div>
+        <div><b data-to="9">9</b><span>signage types, made in-house</span></div>
+        <div><b data-to="10">10</b><span>enterprise clients like Infosys and Embassy</span></div>
       </div>
     </div>
   </section>
@@ -255,7 +427,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <section class="latest" id="latest">
     <div class="wrap">
       <div class="sec-head">
-        <div><span class="tag">Latest project · 2026</span><h2>Svanta by Aakruthi</h2></div>
+        <div><span class="tag">Recent signage project · 2026</span><h2>Svanta by Aakruthi</h2></div>
         <p>Entrance lettering, logo walls and framed wall graphics for the project's sales office — one brand, carried from the gate to the meeting table.</p>
       </div>
       <div class="latest-grid" id="latestGrid"></div>
@@ -290,7 +462,21 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <div><span class="tag">Portable office cabins</span><h2>Steel-built cabins, ready to move into.</h2></div>
         <p class="lead">Marketing offices, site offices and commercial spaces — fabricated in our Bengaluru workshop, from the steel frame to the glass doors and washrooms.</p>
       </div>
+      <div class="cab-project">
+        <div><small>Just delivered · September 2026</small><h3>Assetz KVN site office, KIADB, Bengaluru</h3></div>
+        <ul><li><b>30 × 50 ft</b> footprint</li><li><b>1,500 sq ft</b> ready for work</li><li>Reception, glass meeting room, open office, pantry and washrooms</li></ul>
+      </div>
       <div class="cab-gallery" id="cabGallery"></div>
+
+      <div class="process rv">
+        <h3 class="pt">How a cabin gets built</h3>
+        <ol>
+          <li><span class="dot"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 12h9V3M12 12v9M15.5 7h2.5M12 16h4"/></svg></span><small>Step 1</small><b>Plan the layout</b><span>Reception, rooms, pantry and washrooms drawn to fit your site.</span></li>
+          <li><span class="dot"><svg class="ico" viewBox="0 0 24 24"><path d="M3 8l9-4 9 4v9l-9 4-9-4z"/><path d="M3 8l9 4 9-4M12 12v9"/></svg></span><small>Step 2</small><b>Build the steel frame</b><span>MS frame, cladding and roof welded in our Bengaluru workshop.</span></li>
+          <li><span class="dot"><svg class="ico" viewBox="0 0 24 24"><path d="M6 3h12v18H6z"/><circle cx="15" cy="12" r="1.1" fill="currentColor"/><path d="M3 21h18"/></svg></span><small>Step 3</small><b>Finish the inside</b><span>Walls, ceiling, glass, flooring, lights and fittings done before it leaves.</span></li>
+          <li><span class="dot"><svg class="ico" viewBox="0 0 24 24"><path d="M5 21V4h14"/><path d="M5 8l5-4"/><path d="M16 4v5"/><rect x="12.5" y="9" width="7" height="5"/><path d="M2 21h7"/></svg></span><small>Step 4</small><b>Deliver and set up</b><span>Lifted by crane onto your site, ready to work in within 60–75 days.</span></li>
+        </ol>
+      </div>
 
       <div class="cab-specs">
         <div><h3>Structure</h3><ul><li>Heavy-duty MS bottom and top framing</li><li>Side posts and wall stiffeners</li><li>Steel roofing and outer cladding</li><li>Lifting points for crane shifting</li></ul></div>
@@ -312,10 +498,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <div class="wrap">
       <div class="sec-head"><div><span class="tag">Materials</span><h2>The right material for each job.</h2></div></div>
       <div class="mat">
-        <div><h3>Stainless steel</h3><p>Weatherproof and premium, for building fronts and outdoor letters.</p></div>
-        <div><h3>Brass letters</h3><p>A classic finish for receptions and heritage spaces.</p></div>
-        <div><h3>Acrylic and LED</h3><p>Backlit glow signs that stay bright day and night.</p></div>
-        <div><h3>MS fabrication</h3><p>Pylons, structures and cabin frames, welded in our workshop.</p></div>
+        <div><svg class="ico" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7M12 11v10"/><path d="M7 7.5l4-1.8" /></svg><h3>Stainless steel</h3><p>Weatherproof and premium, for building fronts and outdoor letters.</p></div>
+        <div><svg class="ico" viewBox="0 0 24 24"><path d="M5 20L12 4l7 16"/><path d="M8.2 13.5h7.6"/><path d="M3 20h4M17 20h4"/></svg><h3>Brass letters</h3><p>A classic finish for receptions and heritage spaces.</p></div>
+        <div><svg class="ico" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 5a5 5 0 00-3.3 8.8c.7.6 1.3 1.4 1.3 2.2h4c0-.8.6-1.6 1.3-2.2A5 5 0 0012 5z"/><path d="M12 1.5v1.5M4.5 5l1 1M19.5 5l-1 1M2 11h1.5M20.5 11H22"/></svg><h3>Acrylic and LED</h3><p>Backlit glow signs that stay bright day and night.</p></div>
+        <div><svg class="ico" viewBox="0 0 24 24"><path d="M3 21l8-8"/><path d="M11 13l4-4 2 2-4 4z"/><path d="M15 9l3-3"/><path d="M18 2v2M22 6h-2M20.5 3.5l-1.2 1.2M16 18l1.5 1.5M19 16l2 .5"/></svg><h3>MS fabrication</h3><p>Pylons, structures and cabin frames, welded in our workshop.</p></div>
       </div>
     </div>
   </section>
@@ -323,7 +509,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <section id="clients" style="padding-top:0">
     <div class="wrap">
       <div class="sec-head"><div><span class="tag">Trusted by</span><h2>Names you pass every day.</h2></div></div>
-      <div class="clients"><span>Infosys</span><span>Embassy</span><span>TVS</span><span>Brigade</span><span>Aditya Birla</span><span>Arvind</span><span>Bearys</span><span>Fortius Infra</span><span>Bonito Designs</span></div>
+      <div class="marquee rv"><p class="sr-only" style="position:absolute;left:-9999px">Clients: Infosys, Embassy, Assetz KVN, TVS, Brigade, Aditya Birla, Arvind, Bearys, Fortius Infra, Bonito Designs</p><div class="track" aria-hidden="true"><span>Infosys</span><i></i><span>Embassy</span><i></i><span>Assetz KVN</span><i></i><span>TVS</span><i></i><span>Brigade</span><i></i><span>Aditya Birla</span><i></i><span>Arvind</span><i></i><span>Bearys</span><i></i><span>Fortius Infra</span><i></i><span>Bonito Designs</span><i></i><span>Infosys</span><i></i><span>Embassy</span><i></i><span>Assetz KVN</span><i></i><span>TVS</span><i></i><span>Brigade</span><i></i><span>Aditya Birla</span><i></i><span>Arvind</span><i></i><span>Bearys</span><i></i><span>Fortius Infra</span><i></i><span>Bonito Designs</span><i></i></div></div>
     </div>
   </section>
 
@@ -372,17 +558,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </section>
 </main>
 
-<footer><div class="wrap"><span>© <span id="yr"></span> Team Signit, Bengaluru</span><span>GST 29AALFT6309E1ZY</span></div></footer>
+<footer>
+  <div class="band"><div class="wrap">Signage · Portable cabins · Site offices · Modular structures — made in Bengaluru for 32 years</div></div>
+  <div class="wrap"><span>© <span id="yr"></span> Team Signit, #49, SLV Layout, Mysuru Road, Bengaluru 560039</span><span>GST 29AALFT6309E1ZY</span></div>
+</footer>
 
 <a class="wa-float" href="https://wa.me/919845015675" aria-label="Chat on WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
 
-<div class="picker" role="group" aria-label="Choose a website style">
-  <b>Style</b>
-  <button data-t="kraft"><i style="background:#F2E7CE"></i>Paper Kraft</button>
-  <button data-t="heritage"><i style="background:#EEE3CC;outline:1px dashed #A85426"></i>Heritage Stamp</button>
-  <button data-t="cards"><i style="background:#EAE0C8"></i>Card Stack</button>
-  <button data-t="minimal"><i style="background:#FBF7EE"></i>Warm Minimal</button>
-</div>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
   <button class="x" aria-label="Close">×</button>
@@ -393,7 +575,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 </div>
 
 <script>
-const PHOTOS = [{"c":"building","f":"photos/building/building-01.jpg","t":"photos/building/t/building-01.jpg","w":640,"h":480,"d":false,"src":"B6"},{"c":"building","f":"photos/building/building-02.jpg","t":"photos/building/t/building-02.jpg","w":640,"h":426,"d":false,"src":"B1"},{"c":"building","f":"photos/building/building-03.jpg","t":"photos/building/t/building-03.jpg","w":640,"h":480,"d":false,"src":"B26"},{"c":"building","f":"photos/building/building-04.jpg","t":"photos/building/t/building-04.jpg","w":640,"h":480,"d":false,"src":"B12"},{"c":"building","f":"photos/building/building-05.jpg","t":"photos/building/t/building-05.jpg","w":640,"h":427,"d":false,"src":"B15"},{"c":"building","f":"photos/building/building-06.jpg","t":"photos/building/t/building-06.jpg","w":640,"h":480,"d":false,"src":"B25"},{"c":"building","f":"photos/building/building-07.jpg","t":"photos/building/t/building-07.jpg","w":640,"h":480,"d":false,"src":"B2"},{"c":"building","f":"photos/building/building-08.jpg","t":"photos/building/t/building-08.jpg","w":640,"h":480,"d":false,"src":"B4"},{"c":"building","f":"photos/building/building-09.jpg","t":"photos/building/t/building-09.jpg","w":640,"h":480,"d":false,"src":"B17"},{"c":"building","f":"photos/building/building-10.jpg","t":"photos/building/t/building-10.jpg","w":640,"h":480,"d":false,"src":"B16"},{"c":"building","f":"photos/building/building-11.jpg","t":"photos/building/t/building-11.jpg","w":640,"h":480,"d":false,"src":"B3"},{"c":"building","f":"photos/building/building-12.jpg","t":"photos/building/t/building-12.jpg","w":640,"h":480,"d":false,"src":"B9"},{"c":"building","f":"photos/building/building-13.jpg","t":"photos/building/t/building-13.jpg","w":480,"h":640,"d":false,"src":"B5"},{"c":"building","f":"photos/building/building-14.jpg","t":"photos/building/t/building-14.jpg","w":640,"h":480,"d":false,"src":"B20"},{"c":"building","f":"photos/building/building-15.jpg","t":"photos/building/t/building-15.jpg","w":640,"h":361,"d":false,"src":"B0"},{"c":"building","f":"photos/building/building-16.jpg","t":"photos/building/t/building-16.jpg","w":640,"h":480,"d":false,"src":"B7"},{"c":"building","f":"photos/building/building-17.jpg","t":"photos/building/t/building-17.jpg","w":480,"h":640,"d":false,"src":"B21"},{"c":"building","f":"photos/building/building-18.jpg","t":"photos/building/t/building-18.jpg","w":640,"h":640,"d":false,"src":"B11"},{"c":"building","f":"photos/building/building-19.jpg","t":"photos/building/t/building-19.jpg","w":640,"h":480,"d":false,"src":"B10"},{"c":"building","f":"photos/building/building-20.jpg","t":"photos/building/t/building-20.jpg","w":640,"h":360,"d":false,"src":"P11"},{"c":"building","f":"photos/building/building-21.jpg","t":"photos/building/t/building-21.jpg","w":640,"h":480,"d":false,"src":"P13"},{"c":"building","f":"photos/building/building-22.jpg","t":"photos/building/t/building-22.jpg","w":640,"h":480,"d":false,"src":"P14"},{"c":"building","f":"photos/building/building-23.jpg","t":"photos/building/t/building-23.jpg","w":493,"h":640,"d":false,"src":"B27"},{"c":"building","f":"photos/building/building-24.jpg","t":"photos/building/t/building-24.jpg","w":480,"h":640,"d":false,"src":"B13"},{"c":"building","f":"photos/building/building-25.jpg","t":"photos/building/t/building-25.jpg","w":640,"h":480,"d":false,"src":"B8"},{"c":"building","f":"photos/building/building-26.jpg","t":"photos/building/t/building-26.jpg","w":640,"h":486,"d":false,"src":"B28"},{"c":"building","f":"photos/building/building-27.jpg","t":"photos/building/t/building-27.jpg","w":640,"h":481,"d":false,"src":"P23"},{"c":"building","f":"photos/building/building-28.jpg","t":"photos/building/t/building-28.jpg","w":640,"h":410,"d":false,"src":"P18"},{"c":"building","f":"photos/building/building-29.jpg","t":"photos/building/t/building-29.jpg","w":480,"h":640,"d":false,"src":"B19"},{"c":"building","f":"photos/building/building-30.jpg","t":"photos/building/t/building-30.jpg","w":480,"h":640,"d":false,"src":"B18"},{"c":"building","f":"photos/building/building-31.jpg","t":"photos/building/t/building-31.jpg","w":640,"h":480,"d":false,"src":"B24"},{"c":"building","f":"photos/building/building-32.jpg","t":"photos/building/t/building-32.jpg","w":640,"h":480,"d":false,"src":"P6"},{"c":"building","f":"photos/building/building-33.jpg","t":"photos/building/t/building-33.jpg","w":640,"h":480,"d":false,"src":"P7"},{"c":"building","f":"photos/building/building-34.jpg","t":"photos/building/t/building-34.jpg","w":445,"h":640,"d":false,"src":"B23"},{"c":"project","f":"photos/project/project-01.jpg","t":"photos/project/t/project-01.jpg","w":640,"h":480,"d":false,"src":"P4"},{"c":"project","f":"photos/project/project-02.jpg","t":"photos/project/t/project-02.jpg","w":640,"h":480,"d":false,"src":"P21"},{"c":"project","f":"photos/project/project-03.jpg","t":"photos/project/t/project-03.jpg","w":640,"h":480,"d":false,"src":"P24"},{"c":"project","f":"photos/project/project-04.jpg","t":"photos/project/t/project-04.jpg","w":640,"h":480,"d":false,"src":"B14"},{"c":"project","f":"photos/project/project-05.jpg","t":"photos/project/t/project-05.jpg","w":640,"h":480,"d":false,"src":"P19"},{"c":"project","f":"photos/project/project-06.jpg","t":"photos/project/t/project-06.jpg","w":640,"h":480,"d":false,"src":"P3"},{"c":"project","f":"photos/project/project-07.jpg","t":"photos/project/t/project-07.jpg","w":640,"h":480,"d":false,"src":"P15"},{"c":"project","f":"photos/project/project-08.jpg","t":"photos/project/t/project-08.jpg","w":640,"h":361,"d":false,"src":"B22"},{"c":"project","f":"photos/project/project-09.jpg","t":"photos/project/t/project-09.jpg","w":640,"h":480,"d":false,"src":"P2"},{"c":"project","f":"photos/project/project-10.jpg","t":"photos/project/t/project-10.jpg","w":640,"h":360,"d":false,"src":"P20"},{"c":"project","f":"photos/project/project-11.jpg","t":"photos/project/t/project-11.jpg","w":640,"h":480,"d":false,"src":"P17"},{"c":"project","f":"photos/project/project-12.jpg","t":"photos/project/t/project-12.jpg","w":640,"h":480,"d":false,"src":"P5"},{"c":"project","f":"photos/project/project-13.jpg","t":"photos/project/t/project-13.jpg","w":640,"h":480,"d":false,"src":"P22"},{"c":"project","f":"photos/project/project-14.jpg","t":"photos/project/t/project-14.jpg","w":640,"h":480,"d":false,"src":"P16"},{"c":"project","f":"photos/project/project-15.jpg","t":"photos/project/t/project-15.jpg","w":640,"h":480,"d":false,"src":"P12"},{"c":"project","f":"photos/project/project-16.jpg","t":"photos/project/t/project-16.jpg","w":640,"h":361,"d":false,"src":"P9"},{"c":"internal","f":"photos/internal/internal-01.jpg","t":"photos/internal/t/internal-01.jpg","w":640,"h":480,"d":false,"src":"I22"},{"c":"internal","f":"photos/internal/internal-02.jpg","t":"photos/internal/t/internal-02.jpg","w":330,"h":640,"d":false,"src":"I4"},{"c":"internal","f":"photos/internal/internal-03.jpg","t":"photos/internal/t/internal-03.jpg","w":480,"h":640,"d":false,"src":"I8"},{"c":"internal","f":"photos/internal/internal-04.jpg","t":"photos/internal/t/internal-04.jpg","w":640,"h":360,"d":false,"src":"I3"},{"c":"internal","f":"photos/internal/internal-05.jpg","t":"photos/internal/t/internal-05.jpg","w":640,"h":417,"d":false,"src":"I9"},{"c":"internal","f":"photos/internal/internal-06.jpg","t":"photos/internal/t/internal-06.jpg","w":640,"h":417,"d":false,"src":"I11"},{"c":"internal","f":"photos/internal/internal-07.jpg","t":"photos/internal/t/internal-07.jpg","w":640,"h":480,"d":false,"src":"I17"},{"c":"internal","f":"photos/internal/internal-08.jpg","t":"photos/internal/t/internal-08.jpg","w":640,"h":611,"d":false,"src":"I14"},{"c":"internal","f":"photos/internal/internal-09.jpg","t":"photos/internal/t/internal-09.jpg","w":640,"h":480,"d":false,"src":"I15"},{"c":"internal","f":"photos/internal/internal-10.jpg","t":"photos/internal/t/internal-10.jpg","w":640,"h":480,"d":false,"src":"I16"},{"c":"internal","f":"photos/internal/internal-11.jpg","t":"photos/internal/t/internal-11.jpg","w":640,"h":426,"d":false,"src":"I24"},{"c":"internal","f":"photos/internal/internal-12.jpg","t":"photos/internal/t/internal-12.jpg","w":640,"h":426,"d":false,"src":"I25"},{"c":"internal","f":"photos/internal/internal-13.jpg","t":"photos/internal/t/internal-13.jpg","w":480,"h":640,"d":false,"src":"I19"},{"c":"internal","f":"photos/internal/internal-14.jpg","t":"photos/internal/t/internal-14.jpg","w":360,"h":640,"d":false,"src":"I12"},{"c":"internal","f":"photos/internal/internal-15.jpg","t":"photos/internal/t/internal-15.jpg","w":480,"h":640,"d":false,"src":"I6"},{"c":"internal","f":"photos/internal/internal-16.jpg","t":"photos/internal/t/internal-16.jpg","w":640,"h":480,"d":false,"src":"I0"},{"c":"internal","f":"photos/internal/internal-17.jpg","t":"photos/internal/t/internal-17.jpg","w":640,"h":426,"d":false,"src":"I1"},{"c":"internal","f":"photos/internal/internal-18.jpg","t":"photos/internal/t/internal-18.jpg","w":360,"h":640,"d":false,"src":"I5"},{"c":"internal","f":"photos/internal/internal-19.jpg","t":"photos/internal/t/internal-19.jpg","w":640,"h":426,"d":false,"src":"I2"},{"c":"internal","f":"photos/internal/internal-20.jpg","t":"photos/internal/t/internal-20.jpg","w":640,"h":417,"d":false,"src":"I10"},{"c":"internal","f":"photos/internal/internal-21.jpg","t":"photos/internal/t/internal-21.jpg","w":640,"h":480,"d":false,"src":"I13"},{"c":"internal","f":"photos/internal/internal-22.jpg","t":"photos/internal/t/internal-22.jpg","w":640,"h":360,"d":false,"src":"I18"},{"c":"internal","f":"photos/internal/internal-23.jpg","t":"photos/internal/t/internal-23.jpg","w":480,"h":640,"d":false,"src":"I20"},{"c":"internal","f":"photos/internal/internal-24.jpg","t":"photos/internal/t/internal-24.jpg","w":640,"h":480,"d":false,"src":"I21"},{"c":"internal","f":"photos/internal/internal-25.jpg","t":"photos/internal/t/internal-25.jpg","w":640,"h":480,"d":false,"src":"I23"},{"c":"internal","f":"photos/internal/internal-26.jpg","t":"photos/internal/t/internal-26.jpg","w":360,"h":640,"d":false,"src":"I7"},{"c":"reception","f":"photos/reception/reception-01.jpg","t":"photos/reception/t/reception-01.jpg","w":640,"h":394,"d":false,"src":"M10"},{"c":"reception","f":"photos/reception/reception-02.jpg","t":"photos/reception/t/reception-02.jpg","w":640,"h":595,"d":false,"src":"M6"},{"c":"reception","f":"photos/reception/reception-03.jpg","t":"photos/reception/t/reception-03.jpg","w":640,"h":480,"d":false,"src":"M2"},{"c":"reception","f":"photos/reception/reception-04.jpg","t":"photos/reception/t/reception-04.jpg","w":640,"h":480,"d":false,"src":"M7"},{"c":"reception","f":"photos/reception/reception-05.jpg","t":"photos/reception/t/reception-05.jpg","w":480,"h":640,"d":false,"src":"M8"},{"c":"reception","f":"photos/reception/reception-06.jpg","t":"photos/reception/t/reception-06.jpg","w":640,"h":480,"d":false,"src":"M5"},{"c":"reception","f":"photos/reception/reception-07.jpg","t":"photos/reception/t/reception-07.jpg","w":640,"h":394,"d":false,"src":"M9"},{"c":"reception","f":"photos/reception/reception-08.jpg","t":"photos/reception/t/reception-08.jpg","w":640,"h":480,"d":false,"src":"M0"},{"c":"reception","f":"photos/reception/reception-09.jpg","t":"photos/reception/t/reception-09.jpg","w":640,"h":480,"d":false,"src":"M3"},{"c":"reception","f":"photos/reception/reception-10.jpg","t":"photos/reception/t/reception-10.jpg","w":640,"h":360,"d":false,"src":"M4"},{"c":"wall","f":"photos/wall/wall-01.jpg","t":"photos/wall/t/wall-01.jpg","w":640,"h":480,"d":false,"src":"M21"},{"c":"wall","f":"photos/wall/wall-02.jpg","t":"photos/wall/t/wall-02.jpg","w":640,"h":480,"d":false,"src":"M17"},{"c":"wall","f":"photos/wall/wall-03.jpg","t":"photos/wall/t/wall-03.jpg","w":480,"h":640,"d":false,"src":"M14"},{"c":"wall","f":"photos/wall/wall-04.jpg","t":"photos/wall/t/wall-04.jpg","w":640,"h":480,"d":false,"src":"M16"},{"c":"wall","f":"photos/wall/wall-05.jpg","t":"photos/wall/t/wall-05.jpg","w":640,"h":480,"d":false,"src":"M15"},{"c":"wall","f":"photos/wall/wall-06.jpg","t":"photos/wall/t/wall-06.jpg","w":640,"h":480,"d":false,"src":"M20"},{"c":"wall","f":"photos/wall/wall-07.jpg","t":"photos/wall/t/wall-07.jpg","w":640,"h":480,"d":false,"src":"M24"},{"c":"wall","f":"photos/wall/wall-08.jpg","t":"photos/wall/t/wall-08.jpg","w":640,"h":480,"d":false,"src":"M23"},{"c":"wall","f":"photos/wall/wall-09.jpg","t":"photos/wall/t/wall-09.jpg","w":640,"h":480,"d":false,"src":"M22"},{"c":"wall","f":"photos/wall/wall-10.jpg","t":"photos/wall/t/wall-10.jpg","w":640,"h":480,"d":false,"src":"M18"},{"c":"wall","f":"photos/wall/wall-11.jpg","t":"photos/wall/t/wall-11.jpg","w":640,"h":480,"d":false,"src":"M19"},{"c":"wall","f":"photos/wall/wall-12.jpg","t":"photos/wall/t/wall-12.jpg","w":640,"h":480,"d":false,"src":"M25"},{"c":"wall","f":"photos/wall/wall-13.jpg","t":"photos/wall/t/wall-13.jpg","w":640,"h":480,"d":false,"src":"M12"},{"c":"wall","f":"photos/wall/wall-14.jpg","t":"photos/wall/t/wall-14.jpg","w":640,"h":480,"d":false,"src":"M13"},{"c":"wall","f":"photos/wall/wall-15.jpg","t":"photos/wall/t/wall-15.jpg","w":640,"h":480,"d":false,"src":"M11"},{"c":"pylon","f":"photos/pylon/pylon-01.jpg","t":"photos/pylon/t/pylon-01.jpg","w":480,"h":640,"d":false,"src":"Y15"},{"c":"pylon","f":"photos/pylon/pylon-02.jpg","t":"photos/pylon/t/pylon-02.jpg","w":480,"h":640,"d":false,"src":"Y23"},{"c":"pylon","f":"photos/pylon/pylon-03.jpg","t":"photos/pylon/t/pylon-03.jpg","w":512,"h":640,"d":false,"src":"Y22"},{"c":"pylon","f":"photos/pylon/pylon-04.jpg","t":"photos/pylon/t/pylon-04.jpg","w":480,"h":640,"d":false,"src":"Y2"},{"c":"pylon","f":"photos/pylon/pylon-05.jpg","t":"photos/pylon/t/pylon-05.jpg","w":480,"h":640,"d":false,"src":"Y16"},{"c":"pylon","f":"photos/pylon/pylon-06.jpg","t":"photos/pylon/t/pylon-06.jpg","w":480,"h":640,"d":false,"src":"Y0"},{"c":"pylon","f":"photos/pylon/pylon-07.jpg","t":"photos/pylon/t/pylon-07.jpg","w":360,"h":640,"d":false,"src":"Y4"},{"c":"pylon","f":"photos/pylon/pylon-08.jpg","t":"photos/pylon/t/pylon-08.jpg","w":360,"h":640,"d":false,"src":"Y8"},{"c":"pylon","f":"photos/pylon/pylon-09.jpg","t":"photos/pylon/t/pylon-09.jpg","w":360,"h":640,"d":false,"src":"Y10"},{"c":"pylon","f":"photos/pylon/pylon-10.jpg","t":"photos/pylon/t/pylon-10.jpg","w":360,"h":640,"d":false,"src":"Y9"},{"c":"pylon","f":"photos/pylon/pylon-11.jpg","t":"photos/pylon/t/pylon-11.jpg","w":480,"h":640,"d":false,"src":"Y11"},{"c":"pylon","f":"photos/pylon/pylon-12.jpg","t":"photos/pylon/t/pylon-12.jpg","w":360,"h":640,"d":false,"src":"Y5"},{"c":"pylon","f":"photos/pylon/pylon-13.jpg","t":"photos/pylon/t/pylon-13.jpg","w":480,"h":640,"d":false,"src":"Y21"},{"c":"pylon","f":"photos/pylon/pylon-14.jpg","t":"photos/pylon/t/pylon-14.jpg","w":480,"h":640,"d":false,"src":"Y20"},{"c":"pylon","f":"photos/pylon/pylon-15.jpg","t":"photos/pylon/t/pylon-15.jpg","w":360,"h":640,"d":false,"src":"Y18"},{"c":"pylon","f":"photos/pylon/pylon-16.jpg","t":"photos/pylon/t/pylon-16.jpg","w":480,"h":640,"d":false,"src":"Y1"},{"c":"pylon","f":"photos/pylon/pylon-17.jpg","t":"photos/pylon/t/pylon-17.jpg","w":480,"h":640,"d":false,"src":"Y3"},{"c":"pylon","f":"photos/pylon/pylon-18.jpg","t":"photos/pylon/t/pylon-18.jpg","w":360,"h":640,"d":false,"src":"Y6"},{"c":"pylon","f":"photos/pylon/pylon-19.jpg","t":"photos/pylon/t/pylon-19.jpg","w":360,"h":640,"d":false,"src":"Y7"},{"c":"pylon","f":"photos/pylon/pylon-20.jpg","t":"photos/pylon/t/pylon-20.jpg","w":360,"h":640,"d":false,"src":"Y12"},{"c":"pylon","f":"photos/pylon/pylon-21.jpg","t":"photos/pylon/t/pylon-21.jpg","w":360,"h":640,"d":false,"src":"Y13"},{"c":"pylon","f":"photos/pylon/pylon-22.jpg","t":"photos/pylon/t/pylon-22.jpg","w":360,"h":640,"d":false,"src":"Y14"},{"c":"pylon","f":"photos/pylon/pylon-23.jpg","t":"photos/pylon/t/pylon-23.jpg","w":480,"h":640,"d":false,"src":"Y17"},{"c":"pylon","f":"photos/pylon/pylon-24.jpg","t":"photos/pylon/t/pylon-24.jpg","w":360,"h":640,"d":false,"src":"Y19"},{"c":"braille","f":"photos/braille/braille-01.jpg","t":"photos/braille/t/braille-01.jpg","w":481,"h":640,"d":false,"src":"R3"},{"c":"braille","f":"photos/braille/braille-02.jpg","t":"photos/braille/t/braille-02.jpg","w":640,"h":555,"d":false,"src":"R17"},{"c":"braille","f":"photos/braille/braille-03.jpg","t":"photos/braille/t/braille-03.jpg","w":440,"h":640,"d":false,"src":"R2"},{"c":"braille","f":"photos/braille/braille-04.jpg","t":"photos/braille/t/braille-04.jpg","w":640,"h":421,"d":false,"src":"R4"},{"c":"braille","f":"photos/braille/braille-05.jpg","t":"photos/braille/t/braille-05.jpg","w":505,"h":455,"d":false,"src":"R14"},{"c":"braille","f":"photos/braille/braille-06.jpg","t":"photos/braille/t/braille-06.jpg","w":640,"h":480,"d":false,"src":"R10"},{"c":"braille","f":"photos/braille/braille-07.jpg","t":"photos/braille/t/braille-07.jpg","w":414,"h":640,"d":false,"src":"R0"},{"c":"braille","f":"photos/braille/braille-08.jpg","t":"photos/braille/t/braille-08.jpg","w":607,"h":547,"d":false,"src":"R1"},{"c":"braille","f":"photos/braille/braille-09.jpg","t":"photos/braille/t/braille-09.jpg","w":299,"h":640,"d":false,"src":"R5"},{"c":"braille","f":"photos/braille/braille-10.jpg","t":"photos/braille/t/braille-10.jpg","w":443,"h":640,"d":false,"src":"R6"},{"c":"braille","f":"photos/braille/braille-11.jpg","t":"photos/braille/t/braille-11.jpg","w":449,"h":640,"d":false,"src":"R7"},{"c":"braille","f":"photos/braille/braille-12.jpg","t":"photos/braille/t/braille-12.jpg","w":423,"h":640,"d":false,"src":"R8"},{"c":"braille","f":"photos/braille/braille-13.jpg","t":"photos/braille/t/braille-13.jpg","w":430,"h":640,"d":false,"src":"R9"},{"c":"braille","f":"photos/braille/braille-14.jpg","t":"photos/braille/t/braille-14.jpg","w":345,"h":521,"d":false,"src":"R11"},{"c":"braille","f":"photos/braille/braille-15.jpg","t":"photos/braille/t/braille-15.jpg","w":629,"h":640,"d":false,"src":"R12"},{"c":"braille","f":"photos/braille/braille-16.jpg","t":"photos/braille/t/braille-16.jpg","w":640,"h":373,"d":false,"src":"R13"},{"c":"braille","f":"photos/braille/braille-17.jpg","t":"photos/braille/t/braille-17.jpg","w":640,"h":555,"d":false,"src":"R15"},{"c":"braille","f":"photos/braille/braille-18.jpg","t":"photos/braille/t/braille-18.jpg","w":640,"h":555,"d":false,"src":"R16"},{"c":"parking","f":"photos/parking/parking-01.jpg","t":"photos/parking/t/parking-01.jpg","w":640,"h":423,"d":false,"src":"K1"},{"c":"parking","f":"photos/parking/parking-02.jpg","t":"photos/parking/t/parking-02.jpg","w":480,"h":640,"d":false,"src":"K0"},{"c":"parking","f":"photos/parking/parking-03.jpg","t":"photos/parking/t/parking-03.jpg","w":640,"h":360,"d":false,"src":"K2"},{"c":"parking","f":"photos/parking/parking-04.jpg","t":"photos/parking/t/parking-04.jpg","w":470,"h":640,"d":false,"src":"K7"},{"c":"parking","f":"photos/parking/parking-05.jpg","t":"photos/parking/t/parking-05.jpg","w":640,"h":480,"d":false,"src":"K3"},{"c":"parking","f":"photos/parking/parking-06.jpg","t":"photos/parking/t/parking-06.jpg","w":640,"h":480,"d":false,"src":"K4"},{"c":"parking","f":"photos/parking/parking-07.jpg","t":"photos/parking/t/parking-07.jpg","w":640,"h":480,"d":false,"src":"K5"},{"c":"parking","f":"photos/parking/parking-08.jpg","t":"photos/parking/t/parking-08.jpg","w":470,"h":640,"d":false,"src":"K6"},{"c":"parking","f":"photos/parking/parking-09.jpg","t":"photos/parking/t/parking-09.jpg","w":470,"h":640,"d":false,"src":"K8"},{"c":"fire","f":"photos/fire/fire-01.jpg","t":"photos/fire/t/fire-01.jpg","w":640,"h":415,"d":false,"src":"F6"},{"c":"fire","f":"photos/fire/fire-02.jpg","t":"photos/fire/t/fire-02.jpg","w":628,"h":640,"d":false,"src":"F5"},{"c":"svanta","f":"photos/svanta/svanta-01.jpg","t":"photos/svanta/t/svanta-01.jpg","w":640,"h":360,"d":false,"src":"S8"},{"c":"svanta","f":"photos/svanta/svanta-02.jpg","t":"photos/svanta/t/svanta-02.jpg","w":640,"h":480,"d":false,"src":"S3"},{"c":"svanta","f":"photos/svanta/svanta-03.jpg","t":"photos/svanta/t/svanta-03.jpg","w":309,"h":640,"d":false,"src":"S2"},{"c":"svanta","f":"photos/svanta/svanta-04.jpg","t":"photos/svanta/t/svanta-04.jpg","w":336,"h":640,"d":false,"src":"S1"},{"c":"svanta","f":"photos/svanta/svanta-05.jpg","t":"photos/svanta/t/svanta-05.jpg","w":640,"h":506,"d":false,"src":"S0"},{"c":"svanta","f":"photos/svanta/svanta-06.jpg","t":"photos/svanta/t/svanta-06.jpg","w":480,"h":640,"d":false,"src":"S7"},{"c":"svanta","f":"photos/svanta/svanta-07.jpg","t":"photos/svanta/t/svanta-07.jpg","w":480,"h":640,"d":false,"src":"S4"},{"c":"svanta","f":"photos/svanta/svanta-08.jpg","t":"photos/svanta/t/svanta-08.jpg","w":640,"h":360,"d":false,"src":"S5"},{"c":"svanta","f":"photos/svanta/svanta-09.jpg","t":"photos/svanta/t/svanta-09.jpg","w":640,"h":482,"d":false,"src":"S6"},{"c":"cabin","f":"photos/cabin/cabin-01.jpg","t":"photos/cabin/t/cabin-01.jpg","w":427,"h":640,"d":false},{"c":"cabin","f":"photos/cabin/cabin-02.jpg","t":"photos/cabin/t/cabin-02.jpg","w":381,"h":640,"d":false},{"c":"cabin","f":"photos/cabin/cabin-03.jpg","t":"photos/cabin/t/cabin-03.jpg","w":351,"h":640,"d":false},{"c":"cabin","f":"photos/cabin/cabin-04.jpg","t":"photos/cabin/t/cabin-04.jpg","w":407,"h":640,"d":false},{"c":"cabin","f":"photos/cabin/cabin-05.jpg","t":"photos/cabin/t/cabin-05.jpg","w":427,"h":640,"d":false},{"c":"cabin","f":"photos/cabin/cabin-06.jpg","t":"photos/cabin/t/cabin-06.jpg","w":533,"h":390,"d":false},{"c":"cabin","f":"photos/cabin/cabin-07.jpg","t":"photos/cabin/t/cabin-07.jpg","w":533,"h":390,"d":false},{"c":"cabin","f":"photos/cabin/cabin-08.jpg","t":"photos/cabin/t/cabin-08.jpg","w":427,"h":640,"d":false}];
+const PHOTOS = [{"c":"building","f":"photos/building/building-01.jpg","t":"photos/building/t/building-01.jpg","w":640,"h":480,"d":false,"src":"B6"},{"c":"building","f":"photos/building/building-02.jpg","t":"photos/building/t/building-02.jpg","w":640,"h":426,"d":false,"src":"B1"},{"c":"building","f":"photos/building/building-03.jpg","t":"photos/building/t/building-03.jpg","w":640,"h":480,"d":false,"src":"B26"},{"c":"building","f":"photos/building/building-04.jpg","t":"photos/building/t/building-04.jpg","w":640,"h":480,"d":false,"src":"B12"},{"c":"building","f":"photos/building/building-05.jpg","t":"photos/building/t/building-05.jpg","w":640,"h":427,"d":false,"src":"B15"},{"c":"building","f":"photos/building/building-06.jpg","t":"photos/building/t/building-06.jpg","w":640,"h":480,"d":false,"src":"B25"},{"c":"building","f":"photos/building/building-07.jpg","t":"photos/building/t/building-07.jpg","w":640,"h":480,"d":false,"src":"B2"},{"c":"building","f":"photos/building/building-08.jpg","t":"photos/building/t/building-08.jpg","w":640,"h":480,"d":false,"src":"B4"},{"c":"building","f":"photos/building/building-09.jpg","t":"photos/building/t/building-09.jpg","w":640,"h":480,"d":false,"src":"B17"},{"c":"building","f":"photos/building/building-10.jpg","t":"photos/building/t/building-10.jpg","w":640,"h":480,"d":false,"src":"B16"},{"c":"building","f":"photos/building/building-11.jpg","t":"photos/building/t/building-11.jpg","w":640,"h":480,"d":false,"src":"B3"},{"c":"building","f":"photos/building/building-12.jpg","t":"photos/building/t/building-12.jpg","w":640,"h":480,"d":false,"src":"B9"},{"c":"building","f":"photos/building/building-13.jpg","t":"photos/building/t/building-13.jpg","w":480,"h":640,"d":false,"src":"B5"},{"c":"building","f":"photos/building/building-14.jpg","t":"photos/building/t/building-14.jpg","w":640,"h":480,"d":false,"src":"B20"},{"c":"building","f":"photos/building/building-15.jpg","t":"photos/building/t/building-15.jpg","w":640,"h":361,"d":false,"src":"B0"},{"c":"building","f":"photos/building/building-16.jpg","t":"photos/building/t/building-16.jpg","w":640,"h":480,"d":false,"src":"B7"},{"c":"building","f":"photos/building/building-17.jpg","t":"photos/building/t/building-17.jpg","w":480,"h":640,"d":false,"src":"B21"},{"c":"building","f":"photos/building/building-18.jpg","t":"photos/building/t/building-18.jpg","w":640,"h":640,"d":false,"src":"B11"},{"c":"building","f":"photos/building/building-19.jpg","t":"photos/building/t/building-19.jpg","w":640,"h":480,"d":false,"src":"B10"},{"c":"building","f":"photos/building/building-20.jpg","t":"photos/building/t/building-20.jpg","w":640,"h":360,"d":false,"src":"P11"},{"c":"building","f":"photos/building/building-21.jpg","t":"photos/building/t/building-21.jpg","w":640,"h":480,"d":false,"src":"P13"},{"c":"building","f":"photos/building/building-22.jpg","t":"photos/building/t/building-22.jpg","w":640,"h":480,"d":false,"src":"P14"},{"c":"building","f":"photos/building/building-23.jpg","t":"photos/building/t/building-23.jpg","w":493,"h":640,"d":false,"src":"B27"},{"c":"building","f":"photos/building/building-24.jpg","t":"photos/building/t/building-24.jpg","w":480,"h":640,"d":false,"src":"B13"},{"c":"building","f":"photos/building/building-25.jpg","t":"photos/building/t/building-25.jpg","w":640,"h":480,"d":false,"src":"B8"},{"c":"building","f":"photos/building/building-26.jpg","t":"photos/building/t/building-26.jpg","w":640,"h":486,"d":false,"src":"B28"},{"c":"building","f":"photos/building/building-27.jpg","t":"photos/building/t/building-27.jpg","w":640,"h":481,"d":false,"src":"P23"},{"c":"building","f":"photos/building/building-28.jpg","t":"photos/building/t/building-28.jpg","w":640,"h":410,"d":false,"src":"P18"},{"c":"building","f":"photos/building/building-29.jpg","t":"photos/building/t/building-29.jpg","w":480,"h":640,"d":false,"src":"B19"},{"c":"building","f":"photos/building/building-30.jpg","t":"photos/building/t/building-30.jpg","w":480,"h":640,"d":false,"src":"B18"},{"c":"building","f":"photos/building/building-31.jpg","t":"photos/building/t/building-31.jpg","w":640,"h":480,"d":false,"src":"B24"},{"c":"building","f":"photos/building/building-32.jpg","t":"photos/building/t/building-32.jpg","w":640,"h":480,"d":false,"src":"P6"},{"c":"building","f":"photos/building/building-33.jpg","t":"photos/building/t/building-33.jpg","w":640,"h":480,"d":false,"src":"P7"},{"c":"building","f":"photos/building/building-34.jpg","t":"photos/building/t/building-34.jpg","w":445,"h":640,"d":false,"src":"B23"},{"c":"project","f":"photos/project/project-01.jpg","t":"photos/project/t/project-01.jpg","w":640,"h":480,"d":false,"src":"P4"},{"c":"project","f":"photos/project/project-02.jpg","t":"photos/project/t/project-02.jpg","w":640,"h":480,"d":false,"src":"P21"},{"c":"project","f":"photos/project/project-03.jpg","t":"photos/project/t/project-03.jpg","w":640,"h":480,"d":false,"src":"P24"},{"c":"project","f":"photos/project/project-04.jpg","t":"photos/project/t/project-04.jpg","w":640,"h":480,"d":false,"src":"B14"},{"c":"project","f":"photos/project/project-05.jpg","t":"photos/project/t/project-05.jpg","w":640,"h":480,"d":false,"src":"P19"},{"c":"project","f":"photos/project/project-06.jpg","t":"photos/project/t/project-06.jpg","w":640,"h":480,"d":false,"src":"P3"},{"c":"project","f":"photos/project/project-07.jpg","t":"photos/project/t/project-07.jpg","w":640,"h":480,"d":false,"src":"P15"},{"c":"project","f":"photos/project/project-08.jpg","t":"photos/project/t/project-08.jpg","w":640,"h":361,"d":false,"src":"B22"},{"c":"project","f":"photos/project/project-09.jpg","t":"photos/project/t/project-09.jpg","w":640,"h":480,"d":false,"src":"P2"},{"c":"project","f":"photos/project/project-10.jpg","t":"photos/project/t/project-10.jpg","w":640,"h":360,"d":false,"src":"P20"},{"c":"project","f":"photos/project/project-11.jpg","t":"photos/project/t/project-11.jpg","w":640,"h":480,"d":false,"src":"P17"},{"c":"project","f":"photos/project/project-12.jpg","t":"photos/project/t/project-12.jpg","w":640,"h":480,"d":false,"src":"P5"},{"c":"project","f":"photos/project/project-13.jpg","t":"photos/project/t/project-13.jpg","w":640,"h":480,"d":false,"src":"P22"},{"c":"project","f":"photos/project/project-14.jpg","t":"photos/project/t/project-14.jpg","w":640,"h":480,"d":false,"src":"P16"},{"c":"project","f":"photos/project/project-15.jpg","t":"photos/project/t/project-15.jpg","w":640,"h":480,"d":false,"src":"P12"},{"c":"project","f":"photos/project/project-16.jpg","t":"photos/project/t/project-16.jpg","w":640,"h":361,"d":false,"src":"P9"},{"c":"internal","f":"photos/internal/internal-01.jpg","t":"photos/internal/t/internal-01.jpg","w":640,"h":480,"d":false,"src":"I22"},{"c":"internal","f":"photos/internal/internal-02.jpg","t":"photos/internal/t/internal-02.jpg","w":330,"h":640,"d":false,"src":"I4"},{"c":"internal","f":"photos/internal/internal-03.jpg","t":"photos/internal/t/internal-03.jpg","w":480,"h":640,"d":false,"src":"I8"},{"c":"internal","f":"photos/internal/internal-04.jpg","t":"photos/internal/t/internal-04.jpg","w":640,"h":360,"d":false,"src":"I3"},{"c":"internal","f":"photos/internal/internal-05.jpg","t":"photos/internal/t/internal-05.jpg","w":640,"h":417,"d":false,"src":"I9"},{"c":"internal","f":"photos/internal/internal-06.jpg","t":"photos/internal/t/internal-06.jpg","w":640,"h":417,"d":false,"src":"I11"},{"c":"internal","f":"photos/internal/internal-07.jpg","t":"photos/internal/t/internal-07.jpg","w":640,"h":480,"d":false,"src":"I17"},{"c":"internal","f":"photos/internal/internal-08.jpg","t":"photos/internal/t/internal-08.jpg","w":640,"h":611,"d":false,"src":"I14"},{"c":"internal","f":"photos/internal/internal-09.jpg","t":"photos/internal/t/internal-09.jpg","w":640,"h":480,"d":false,"src":"I15"},{"c":"internal","f":"photos/internal/internal-10.jpg","t":"photos/internal/t/internal-10.jpg","w":640,"h":480,"d":false,"src":"I16"},{"c":"internal","f":"photos/internal/internal-11.jpg","t":"photos/internal/t/internal-11.jpg","w":640,"h":426,"d":false,"src":"I24"},{"c":"internal","f":"photos/internal/internal-12.jpg","t":"photos/internal/t/internal-12.jpg","w":640,"h":426,"d":false,"src":"I25"},{"c":"internal","f":"photos/internal/internal-13.jpg","t":"photos/internal/t/internal-13.jpg","w":480,"h":640,"d":false,"src":"I19"},{"c":"internal","f":"photos/internal/internal-14.jpg","t":"photos/internal/t/internal-14.jpg","w":360,"h":640,"d":false,"src":"I12"},{"c":"internal","f":"photos/internal/internal-15.jpg","t":"photos/internal/t/internal-15.jpg","w":480,"h":640,"d":false,"src":"I6"},{"c":"internal","f":"photos/internal/internal-16.jpg","t":"photos/internal/t/internal-16.jpg","w":640,"h":480,"d":false,"src":"I0"},{"c":"internal","f":"photos/internal/internal-17.jpg","t":"photos/internal/t/internal-17.jpg","w":640,"h":426,"d":false,"src":"I1"},{"c":"internal","f":"photos/internal/internal-18.jpg","t":"photos/internal/t/internal-18.jpg","w":360,"h":640,"d":false,"src":"I5"},{"c":"internal","f":"photos/internal/internal-19.jpg","t":"photos/internal/t/internal-19.jpg","w":640,"h":426,"d":false,"src":"I2"},{"c":"internal","f":"photos/internal/internal-20.jpg","t":"photos/internal/t/internal-20.jpg","w":640,"h":417,"d":false,"src":"I10"},{"c":"internal","f":"photos/internal/internal-21.jpg","t":"photos/internal/t/internal-21.jpg","w":640,"h":480,"d":false,"src":"I13"},{"c":"internal","f":"photos/internal/internal-22.jpg","t":"photos/internal/t/internal-22.jpg","w":640,"h":360,"d":false,"src":"I18"},{"c":"internal","f":"photos/internal/internal-23.jpg","t":"photos/internal/t/internal-23.jpg","w":480,"h":640,"d":false,"src":"I20"},{"c":"internal","f":"photos/internal/internal-24.jpg","t":"photos/internal/t/internal-24.jpg","w":640,"h":480,"d":false,"src":"I21"},{"c":"internal","f":"photos/internal/internal-25.jpg","t":"photos/internal/t/internal-25.jpg","w":640,"h":480,"d":false,"src":"I23"},{"c":"internal","f":"photos/internal/internal-26.jpg","t":"photos/internal/t/internal-26.jpg","w":360,"h":640,"d":false,"src":"I7"},{"c":"reception","f":"photos/reception/reception-01.jpg","t":"photos/reception/t/reception-01.jpg","w":640,"h":394,"d":false,"src":"M10"},{"c":"reception","f":"photos/reception/reception-02.jpg","t":"photos/reception/t/reception-02.jpg","w":640,"h":595,"d":false,"src":"M6"},{"c":"reception","f":"photos/reception/reception-03.jpg","t":"photos/reception/t/reception-03.jpg","w":640,"h":480,"d":false,"src":"M2"},{"c":"reception","f":"photos/reception/reception-04.jpg","t":"photos/reception/t/reception-04.jpg","w":640,"h":480,"d":false,"src":"M7"},{"c":"reception","f":"photos/reception/reception-05.jpg","t":"photos/reception/t/reception-05.jpg","w":480,"h":640,"d":false,"src":"M8"},{"c":"reception","f":"photos/reception/reception-06.jpg","t":"photos/reception/t/reception-06.jpg","w":640,"h":480,"d":false,"src":"M5"},{"c":"reception","f":"photos/reception/reception-07.jpg","t":"photos/reception/t/reception-07.jpg","w":640,"h":394,"d":false,"src":"M9"},{"c":"reception","f":"photos/reception/reception-08.jpg","t":"photos/reception/t/reception-08.jpg","w":640,"h":480,"d":false,"src":"M0"},{"c":"reception","f":"photos/reception/reception-09.jpg","t":"photos/reception/t/reception-09.jpg","w":640,"h":480,"d":false,"src":"M3"},{"c":"reception","f":"photos/reception/reception-10.jpg","t":"photos/reception/t/reception-10.jpg","w":640,"h":360,"d":false,"src":"M4"},{"c":"wall","f":"photos/wall/wall-01.jpg","t":"photos/wall/t/wall-01.jpg","w":640,"h":480,"d":false,"src":"M21"},{"c":"wall","f":"photos/wall/wall-02.jpg","t":"photos/wall/t/wall-02.jpg","w":640,"h":480,"d":false,"src":"M17"},{"c":"wall","f":"photos/wall/wall-03.jpg","t":"photos/wall/t/wall-03.jpg","w":480,"h":640,"d":false,"src":"M14"},{"c":"wall","f":"photos/wall/wall-04.jpg","t":"photos/wall/t/wall-04.jpg","w":640,"h":480,"d":false,"src":"M16"},{"c":"wall","f":"photos/wall/wall-05.jpg","t":"photos/wall/t/wall-05.jpg","w":640,"h":480,"d":false,"src":"M15"},{"c":"wall","f":"photos/wall/wall-06.jpg","t":"photos/wall/t/wall-06.jpg","w":640,"h":480,"d":false,"src":"M20"},{"c":"wall","f":"photos/wall/wall-07.jpg","t":"photos/wall/t/wall-07.jpg","w":640,"h":480,"d":false,"src":"M24"},{"c":"wall","f":"photos/wall/wall-08.jpg","t":"photos/wall/t/wall-08.jpg","w":640,"h":480,"d":false,"src":"M23"},{"c":"wall","f":"photos/wall/wall-09.jpg","t":"photos/wall/t/wall-09.jpg","w":640,"h":480,"d":false,"src":"M22"},{"c":"wall","f":"photos/wall/wall-10.jpg","t":"photos/wall/t/wall-10.jpg","w":640,"h":480,"d":false,"src":"M18"},{"c":"wall","f":"photos/wall/wall-11.jpg","t":"photos/wall/t/wall-11.jpg","w":640,"h":480,"d":false,"src":"M19"},{"c":"wall","f":"photos/wall/wall-12.jpg","t":"photos/wall/t/wall-12.jpg","w":640,"h":480,"d":false,"src":"M25"},{"c":"wall","f":"photos/wall/wall-13.jpg","t":"photos/wall/t/wall-13.jpg","w":640,"h":480,"d":false,"src":"M12"},{"c":"wall","f":"photos/wall/wall-14.jpg","t":"photos/wall/t/wall-14.jpg","w":640,"h":480,"d":false,"src":"M13"},{"c":"wall","f":"photos/wall/wall-15.jpg","t":"photos/wall/t/wall-15.jpg","w":640,"h":480,"d":false,"src":"M11"},{"c":"pylon","f":"photos/pylon/pylon-01.jpg","t":"photos/pylon/t/pylon-01.jpg","w":480,"h":640,"d":false,"src":"Y15"},{"c":"pylon","f":"photos/pylon/pylon-02.jpg","t":"photos/pylon/t/pylon-02.jpg","w":480,"h":640,"d":false,"src":"Y23"},{"c":"pylon","f":"photos/pylon/pylon-03.jpg","t":"photos/pylon/t/pylon-03.jpg","w":512,"h":640,"d":false,"src":"Y22"},{"c":"pylon","f":"photos/pylon/pylon-04.jpg","t":"photos/pylon/t/pylon-04.jpg","w":480,"h":640,"d":false,"src":"Y2"},{"c":"pylon","f":"photos/pylon/pylon-05.jpg","t":"photos/pylon/t/pylon-05.jpg","w":480,"h":640,"d":false,"src":"Y16"},{"c":"pylon","f":"photos/pylon/pylon-06.jpg","t":"photos/pylon/t/pylon-06.jpg","w":480,"h":640,"d":false,"src":"Y0"},{"c":"pylon","f":"photos/pylon/pylon-07.jpg","t":"photos/pylon/t/pylon-07.jpg","w":360,"h":640,"d":false,"src":"Y4"},{"c":"pylon","f":"photos/pylon/pylon-08.jpg","t":"photos/pylon/t/pylon-08.jpg","w":360,"h":640,"d":false,"src":"Y8"},{"c":"pylon","f":"photos/pylon/pylon-09.jpg","t":"photos/pylon/t/pylon-09.jpg","w":360,"h":640,"d":false,"src":"Y10"},{"c":"pylon","f":"photos/pylon/pylon-10.jpg","t":"photos/pylon/t/pylon-10.jpg","w":360,"h":640,"d":false,"src":"Y9"},{"c":"pylon","f":"photos/pylon/pylon-11.jpg","t":"photos/pylon/t/pylon-11.jpg","w":480,"h":640,"d":false,"src":"Y11"},{"c":"pylon","f":"photos/pylon/pylon-12.jpg","t":"photos/pylon/t/pylon-12.jpg","w":360,"h":640,"d":false,"src":"Y5"},{"c":"pylon","f":"photos/pylon/pylon-13.jpg","t":"photos/pylon/t/pylon-13.jpg","w":480,"h":640,"d":false,"src":"Y21"},{"c":"pylon","f":"photos/pylon/pylon-14.jpg","t":"photos/pylon/t/pylon-14.jpg","w":480,"h":640,"d":false,"src":"Y20"},{"c":"pylon","f":"photos/pylon/pylon-15.jpg","t":"photos/pylon/t/pylon-15.jpg","w":360,"h":640,"d":false,"src":"Y18"},{"c":"pylon","f":"photos/pylon/pylon-16.jpg","t":"photos/pylon/t/pylon-16.jpg","w":480,"h":640,"d":false,"src":"Y1"},{"c":"pylon","f":"photos/pylon/pylon-17.jpg","t":"photos/pylon/t/pylon-17.jpg","w":480,"h":640,"d":false,"src":"Y3"},{"c":"pylon","f":"photos/pylon/pylon-18.jpg","t":"photos/pylon/t/pylon-18.jpg","w":360,"h":640,"d":false,"src":"Y6"},{"c":"pylon","f":"photos/pylon/pylon-19.jpg","t":"photos/pylon/t/pylon-19.jpg","w":360,"h":640,"d":false,"src":"Y7"},{"c":"pylon","f":"photos/pylon/pylon-20.jpg","t":"photos/pylon/t/pylon-20.jpg","w":360,"h":640,"d":false,"src":"Y12"},{"c":"pylon","f":"photos/pylon/pylon-21.jpg","t":"photos/pylon/t/pylon-21.jpg","w":360,"h":640,"d":false,"src":"Y13"},{"c":"pylon","f":"photos/pylon/pylon-22.jpg","t":"photos/pylon/t/pylon-22.jpg","w":360,"h":640,"d":false,"src":"Y14"},{"c":"pylon","f":"photos/pylon/pylon-23.jpg","t":"photos/pylon/t/pylon-23.jpg","w":480,"h":640,"d":false,"src":"Y17"},{"c":"pylon","f":"photos/pylon/pylon-24.jpg","t":"photos/pylon/t/pylon-24.jpg","w":360,"h":640,"d":false,"src":"Y19"},{"c":"braille","f":"photos/braille/braille-01.jpg","t":"photos/braille/t/braille-01.jpg","w":481,"h":640,"d":false,"src":"R3"},{"c":"braille","f":"photos/braille/braille-02.jpg","t":"photos/braille/t/braille-02.jpg","w":640,"h":555,"d":false,"src":"R17"},{"c":"braille","f":"photos/braille/braille-03.jpg","t":"photos/braille/t/braille-03.jpg","w":440,"h":640,"d":false,"src":"R2"},{"c":"braille","f":"photos/braille/braille-04.jpg","t":"photos/braille/t/braille-04.jpg","w":640,"h":421,"d":false,"src":"R4"},{"c":"braille","f":"photos/braille/braille-05.jpg","t":"photos/braille/t/braille-05.jpg","w":505,"h":455,"d":false,"src":"R14"},{"c":"braille","f":"photos/braille/braille-06.jpg","t":"photos/braille/t/braille-06.jpg","w":640,"h":480,"d":false,"src":"R10"},{"c":"braille","f":"photos/braille/braille-07.jpg","t":"photos/braille/t/braille-07.jpg","w":414,"h":640,"d":false,"src":"R0"},{"c":"braille","f":"photos/braille/braille-08.jpg","t":"photos/braille/t/braille-08.jpg","w":607,"h":547,"d":false,"src":"R1"},{"c":"braille","f":"photos/braille/braille-09.jpg","t":"photos/braille/t/braille-09.jpg","w":299,"h":640,"d":false,"src":"R5"},{"c":"braille","f":"photos/braille/braille-10.jpg","t":"photos/braille/t/braille-10.jpg","w":443,"h":640,"d":false,"src":"R6"},{"c":"braille","f":"photos/braille/braille-11.jpg","t":"photos/braille/t/braille-11.jpg","w":449,"h":640,"d":false,"src":"R7"},{"c":"braille","f":"photos/braille/braille-12.jpg","t":"photos/braille/t/braille-12.jpg","w":423,"h":640,"d":false,"src":"R8"},{"c":"braille","f":"photos/braille/braille-13.jpg","t":"photos/braille/t/braille-13.jpg","w":430,"h":640,"d":false,"src":"R9"},{"c":"braille","f":"photos/braille/braille-14.jpg","t":"photos/braille/t/braille-14.jpg","w":345,"h":521,"d":false,"src":"R11"},{"c":"braille","f":"photos/braille/braille-15.jpg","t":"photos/braille/t/braille-15.jpg","w":629,"h":640,"d":false,"src":"R12"},{"c":"braille","f":"photos/braille/braille-16.jpg","t":"photos/braille/t/braille-16.jpg","w":640,"h":373,"d":false,"src":"R13"},{"c":"braille","f":"photos/braille/braille-17.jpg","t":"photos/braille/t/braille-17.jpg","w":640,"h":555,"d":false,"src":"R15"},{"c":"braille","f":"photos/braille/braille-18.jpg","t":"photos/braille/t/braille-18.jpg","w":640,"h":555,"d":false,"src":"R16"},{"c":"parking","f":"photos/parking/parking-01.jpg","t":"photos/parking/t/parking-01.jpg","w":640,"h":423,"d":false,"src":"K1"},{"c":"parking","f":"photos/parking/parking-02.jpg","t":"photos/parking/t/parking-02.jpg","w":480,"h":640,"d":false,"src":"K0"},{"c":"parking","f":"photos/parking/parking-03.jpg","t":"photos/parking/t/parking-03.jpg","w":640,"h":360,"d":false,"src":"K2"},{"c":"parking","f":"photos/parking/parking-04.jpg","t":"photos/parking/t/parking-04.jpg","w":470,"h":640,"d":false,"src":"K7"},{"c":"parking","f":"photos/parking/parking-05.jpg","t":"photos/parking/t/parking-05.jpg","w":640,"h":480,"d":false,"src":"K3"},{"c":"parking","f":"photos/parking/parking-06.jpg","t":"photos/parking/t/parking-06.jpg","w":640,"h":480,"d":false,"src":"K4"},{"c":"parking","f":"photos/parking/parking-07.jpg","t":"photos/parking/t/parking-07.jpg","w":640,"h":480,"d":false,"src":"K5"},{"c":"parking","f":"photos/parking/parking-08.jpg","t":"photos/parking/t/parking-08.jpg","w":470,"h":640,"d":false,"src":"K6"},{"c":"parking","f":"photos/parking/parking-09.jpg","t":"photos/parking/t/parking-09.jpg","w":470,"h":640,"d":false,"src":"K8"},{"c":"fire","f":"photos/fire/fire-01.jpg","t":"photos/fire/t/fire-01.jpg","w":640,"h":415,"d":false,"src":"F6"},{"c":"fire","f":"photos/fire/fire-02.jpg","t":"photos/fire/t/fire-02.jpg","w":628,"h":640,"d":false,"src":"F5"},{"c":"svanta","f":"photos/svanta/svanta-01.jpg","t":"photos/svanta/t/svanta-01.jpg","w":640,"h":360,"d":false,"src":"S8"},{"c":"svanta","f":"photos/svanta/svanta-02.jpg","t":"photos/svanta/t/svanta-02.jpg","w":640,"h":480,"d":false,"src":"S3"},{"c":"svanta","f":"photos/svanta/svanta-03.jpg","t":"photos/svanta/t/svanta-03.jpg","w":309,"h":640,"d":false,"src":"S2"},{"c":"svanta","f":"photos/svanta/svanta-04.jpg","t":"photos/svanta/t/svanta-04.jpg","w":336,"h":640,"d":false,"src":"S1"},{"c":"svanta","f":"photos/svanta/svanta-05.jpg","t":"photos/svanta/t/svanta-05.jpg","w":640,"h":506,"d":false,"src":"S0"},{"c":"svanta","f":"photos/svanta/svanta-06.jpg","t":"photos/svanta/t/svanta-06.jpg","w":480,"h":640,"d":false,"src":"S7"},{"c":"svanta","f":"photos/svanta/svanta-07.jpg","t":"photos/svanta/t/svanta-07.jpg","w":480,"h":640,"d":false,"src":"S4"},{"c":"svanta","f":"photos/svanta/svanta-08.jpg","t":"photos/svanta/t/svanta-08.jpg","w":640,"h":360,"d":false,"src":"S5"},{"c":"svanta","f":"photos/svanta/svanta-09.jpg","t":"photos/svanta/t/svanta-09.jpg","w":640,"h":482,"d":false,"src":"S6"},{"c":"cabin","f":"photos/cabin/cabin-01.jpg","t":"photos/cabin/t/cabin-01.jpg","w":640,"h":480,"d":false},{"c":"cabin","f":"photos/cabin/cabin-02.jpg","t":"photos/cabin/t/cabin-02.jpg","w":640,"h":480,"d":false},{"c":"cabin","f":"photos/cabin/cabin-03.jpg","t":"photos/cabin/t/cabin-03.jpg","w":640,"h":480,"d":false},{"c":"cabin","f":"photos/cabin/cabin-04.jpg","t":"photos/cabin/t/cabin-04.jpg","w":640,"h":480,"d":false},{"c":"cabin","f":"photos/cabin/cabin-05.jpg","t":"photos/cabin/t/cabin-05.jpg","w":640,"h":480,"d":false},{"c":"cabin","f":"photos/cabin/cabin-06.jpg","t":"photos/cabin/t/cabin-06.jpg","w":640,"h":480,"d":false},{"c":"cabin","f":"photos/cabin/cabin-07.jpg","t":"photos/cabin/t/cabin-07.jpg","w":640,"h":480,"d":false},{"c":"cabin","f":"photos/cabin/cabin-08.jpg","t":"photos/cabin/t/cabin-08.jpg","w":640,"h":480,"d":false},{"c":"cabin","f":"photos/cabin/cabin-09.jpg","t":"photos/cabin/t/cabin-09.jpg","w":640,"h":480,"d":false},{"c":"cabin","f":"photos/cabin/cabin-10.jpg","t":"photos/cabin/t/cabin-10.jpg","w":640,"h":480,"d":false},{"c":"cabin","f":"photos/cabin/cabin-11.jpg","t":"photos/cabin/t/cabin-11.jpg","w":640,"h":480,"d":false},{"c":"cabin","f":"photos/cabin/cabin-12.jpg","t":"photos/cabin/t/cabin-12.jpg","w":640,"h":480,"d":false}];
 const CATS = [
   ['building','Building signage','Façade letters and glow signs that put your name on the skyline.'],
   ['pylon','Pylon signage','Tall standing signs that people spot from the road.'],
@@ -405,7 +587,7 @@ const CATS = [
   ['fire','Fire exit signage','Code-compliant exit signs that guide people out safely.'],
   ['braille','Braille signage','Tactile signs so everyone can find their way on their own.']
 ];
-const LABEL = Object.fromEntries(CATS.map(c=>[c[0],c[1]])); LABEL.svanta='Svanta by Aakruthi'; LABEL.cabin='Portable office cabin';
+const LABEL = Object.fromEntries(CATS.map(c=>[c[0],c[1]])); LABEL.svanta='Svanta by Aakruthi'; LABEL.cabin='Assetz KVN portable office';
 const byCat = c => PHOTOS.filter(p=>p.c===c);
 const esc = s => String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 
@@ -416,46 +598,101 @@ function bindTiles(root, list){
   root.querySelectorAll('.ph').forEach(b=>b.addEventListener('click',()=>openLb(list,+b.dataset.i)));
 }
 
-/* Hero mosaic + latest */
-const heroPicks = ['photos/project/project-01.jpg','photos/building/building-01.jpg','photos/pylon/pylon-01.jpg','photos/internal/internal-01.jpg','photos/building/building-02.jpg'];
-const heroList = heroPicks.map(f=>PHOTOS.find(p=>p.f===f)).filter(Boolean);
-const mosaic = document.getElementById('mosaic');
-mosaic.innerHTML = heroList.map((p,i)=>tile(p,heroList,i,true).replace('</button>',`<span class="cap">${esc(LABEL[p.c])}</span></button>`)).join('');
-bindTiles(mosaic, heroList);
+/* Hero mosaic: day and night sets */
+const P = f => PHOTOS.find(p=>p.f===`photos/${f}.jpg`);
+const HERO = [
+  {day:['project/project-09','project/project-11','project/project-07'], night:['project/project-01','project/project-12','project/project-06']},
+  {day:['building/building-04'], night:['building/building-01']},
+  {day:['pylon/pylon-02'], night:['pylon/pylon-01']},
+  {day:['building/building-05'], night:['building/building-03']},
+  {day:['building/building-12'], night:['building/building-02']},
+].map(t=>({day:t.day.map(P).filter(Boolean), night:t.night.map(P).filter(Boolean)}));
+const mosaic = document.getElementById('mosaic'), heroEl=document.getElementById('hero');
+let mode='day', slide=0;
+mosaic.innerHTML = HERO.map((t,i)=>`<button class="ph" style="--i:${i}" data-t="${i}" aria-label="Open photo">${
+  [...t.day.map((p,k)=>`<img src="${p.t}" alt="${esc(LABEL[p.c])} by Team Signit" data-m="day" data-k="${k}">`),
+   ...t.night.map((p,k)=>`<img src="${p.t}" alt="${esc(LABEL[p.c])} at night, by Team Signit" data-m="night" data-k="${k}">`)].join('')
+}<span class="cap"></span></button>`).join('');
+function paintHero(){
+  mosaic.querySelectorAll('.ph').forEach((b,i)=>{
+    const set=HERO[i][mode], k=i===0 ? slide%set.length : 0;
+    b.querySelectorAll('img').forEach(im=>im.classList.toggle('on', im.dataset.m===mode && +im.dataset.k===k));
+    b.querySelector('.cap').textContent = LABEL[set[k].c] + (mode==='night'?' · at night':'');
+  });
+}
+paintHero();
+mosaic.addEventListener('click',e=>{ const b=e.target.closest('.ph'); if(!b) return;
+  const list=HERO.flatMap(t=>t[mode]); const i=+b.dataset.t; const cur=HERO[i][mode][i===0?slide%HERO[0][mode].length:0];
+  openLb(list, list.indexOf(cur)); });
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!RM) setInterval(()=>{ if(document.hidden) return; slide++; paintHero(); }, 5200);
+const lights=document.getElementById('lights');
+lights.addEventListener('click',()=>{
+  mode = mode==='day' ? 'night' : 'day'; slide=0;
+  heroEl.classList.toggle('night', mode==='night');
+  lights.setAttribute('aria-pressed', mode==='night');
+  lights.querySelector('.lbl').textContent = mode==='night' ? 'Back to daylight' : 'See our signs at night';
+  paintHero();
+});
+/* headline words */
+(()=>{ const h=document.querySelector('.hero h1'); h.innerHTML=h.textContent.split(' ').map((w,i)=>`<span class="w" style="--i:${i}">${w}</span>`).join(' '); })();
+
 const sv = byCat('svanta').slice(0,6);
 const lg = document.getElementById('latestGrid'); lg.innerHTML = sv.map((p,i)=>tile(p,sv,i)).join(''); bindTiles(lg, sv);
 
 const cb=byCat('cabin'); const cg=document.getElementById('cabGallery'); cg.innerHTML=cb.map((p,i)=>tile(p,cb,i)).join(''); bindTiles(cg,cb);
 
 /* Gallery */
-let current='all', shown=24, list=[];
+const STEP = matchMedia('(max-width:600px)').matches ? 12 : 24;
+let current='all', shown=STEP, list=[];
 const grid=document.getElementById('grid'), moreBtn=document.getElementById('moreBtn'), filters=document.getElementById('filters');
 const allList = () => { const out=[]; const per=CATS.map(c=>byCat(c[0]).filter(p=>!p.d)); let k=0, any=true;
   while(any){ any=false; per.forEach(a=>{ if(a[k]){out.push(a[k]); any=true;} }); k++; } return out; };
 filters.innerHTML = [`<button class="chip" data-c="all" aria-pressed="true">All <small>${allList().length}</small></button>`]
   .concat(CATS.map(c=>`<button class="chip" data-c="${c[0]}" aria-pressed="false">${c[1].replace(' signage','')} <small>${byCat(c[0]).length}</small></button>`)).join('');
 filters.addEventListener('click',e=>{const b=e.target.closest('.chip'); if(b) setFilter(b.dataset.c);});
-function setFilter(c){ current=c; shown=24; filters.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed', b.dataset.c===c)); render(); }
-function render(){
+function setFilter(c){ current=c; shown=STEP; filters.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed', b.dataset.c===c)); render(); }
+function render(from=0){
   list = current==='all' ? allList() : byCat(current);
-  grid.innerHTML = list.slice(0,shown).map((p,i)=>tile(p,list,i)).join('');
-  bindTiles(grid, list);
+  const html = list.slice(from,shown).map((p,i)=>tile(p,list,from+i).replace('class="ph"',`class="ph nw" style="--i:${Math.min(i,14)}"`)).join('');
+  if(from===0) grid.innerHTML = html; else grid.insertAdjacentHTML('beforeend', html);
+  grid.querySelectorAll('.ph:not([data-b])').forEach(b=>{ b.dataset.b=1; b.addEventListener('click',()=>openLb(list,+b.dataset.i)); });
   moreBtn.parentElement.style.display = shown < list.length ? '' : 'none';
   moreBtn.textContent = `Show more photos (${list.length-shown} left)`;
 }
-moreBtn.addEventListener('click',()=>{ shown+=24; render(); });
+moreBtn.addEventListener('click',()=>{ const from=shown; shown+=STEP; render(from); });
 render();
 
 /* Services */
 const svc=document.getElementById('svcGrid');
-svc.innerHTML = CATS.map(c=>{ const p=byCat(c[0])[0]; return `<button class="svc" data-c="${c[0]}"><div class="img"><img src="${p.t}" alt="" loading="lazy"></div><div class="body"><h3>${c[1]} <small>${byCat(c[0]).length} photos</small></h3><p>${c[2]}</p></div></button>`; }).join('');
+const SVC_ICO = {
+  building:'<path d="M4 21V5l8-3 8 3v16"/><path d="M9.5 21v-4h5v4"/><path d="M8 8h2M14 8h2M8 12h2M14 12h2"/>',
+  pylon:'<path d="M9 21V3h6v18"/><path d="M6.5 21h11"/><path d="M11 7h2M11 11h2"/>',
+  reception:'<path d="M3 20h18"/><path d="M5 20v-6h14v6"/><path d="M6.5 4h11v6h-11z"/>',
+  internal:'<path d="M4 4h16v6H4z"/><path d="M4 14h10v6H4z"/><path d="M17 14.5l3 2.5-3 2.5"/>',
+  wall:'<rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="16" cy="8.5" r="1.4"/>',
+  project:'<rect x="3" y="4" width="18" height="10" rx="1"/><path d="M7 14v7M17 14v7"/><path d="M6.5 8h7M6.5 11h4"/>',
+  parking:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M10 17V7h3a3 3 0 010 6h-3"/>',
+  fire:'<path d="M14 3h6v18h-6"/><path d="M3 12h10"/><path d="M9.5 8.5L13 12l-3.5 3.5"/>',
+  braille:'<rect x="5" y="2.5" width="14" height="19" rx="2"/><circle cx="9.5" cy="7.5" r="1.3" fill="currentColor"/><circle cx="14.5" cy="7.5" r="1.3"/><circle cx="9.5" cy="12" r="1.3" fill="currentColor"/><circle cx="14.5" cy="12" r="1.3" fill="currentColor"/><circle cx="9.5" cy="16.5" r="1.3"/><circle cx="14.5" cy="16.5" r="1.3" fill="currentColor"/>'
+};
+svc.innerHTML = CATS.map(c=>{ const ps=byCat(c[0]).slice(0,4);
+  return `<button class="svc" data-c="${c[0]}"><div class="img">${ps.map((p,k)=>`<img src="${p.t}" alt="" loading="lazy"${k===0?' class="on"':''}>`).join('')}</div><div class="body"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${SVC_ICO[c[0]]}</svg><h3>${c[1]} <small>${byCat(c[0]).length} photos</small></h3><p>${c[2]}</p></div></button>`; }).join('');
+if(matchMedia('(hover:hover)').matches && !RM){
+  svc.querySelectorAll('.svc').forEach(card=>{ let t=null, k=0; const ims=card.querySelectorAll('.img img');
+    const show=n=>ims.forEach((im,j)=>im.classList.toggle('on',j===n));
+    card.addEventListener('mouseenter',()=>{ if(ims.length<2) return; t=setInterval(()=>{ k=(k+1)%ims.length; show(k); },950); });
+    card.addEventListener('mouseleave',()=>{ clearInterval(t); k=0; show(0); });
+  });
+}
 svc.addEventListener('click',e=>{ const b=e.target.closest('.svc'); if(!b) return; setFilter(b.dataset.c); document.getElementById('work').scrollIntoView(); });
 
 /* Lightbox */
 const lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'), lbBar=document.getElementById('lbBar');
 let lbList=[], lbI=0, lastFocus=null;
-function openLb(l,i){ lbList=l; lbI=i; lastFocus=document.activeElement; lb.classList.add('open'); showLb(); lb.querySelector('.x').focus(); document.body.style.overflow='hidden'; }
-function showLb(){ const p=lbList[lbI]; lbImg.src=p.f; lbImg.alt=LABEL[p.c]; lbBar.textContent=`${LABEL[p.c]}  ·  ${lbI+1} of ${lbList.length}`; }
+function openLb(l,i){ lbList=l; lbI=i; lastFocus=document.activeElement; lbImg.src=lbList[lbI].f; showLb(true); requestAnimationFrame(()=>lb.classList.add('open')); lb.querySelector('.x').focus(); document.body.style.overflow='hidden'; }
+function showLb(first){ const p=lbList[lbI]; lbImg.alt=LABEL[p.c]; lbBar.textContent=`${LABEL[p.c]}  ·  ${lbI+1} of ${lbList.length}`;
+  if(first) return; lbImg.classList.add('swap'); setTimeout(()=>{ lbImg.onload=()=>lbImg.classList.remove('swap'); lbImg.src=p.f; if(lbImg.complete) lbImg.classList.remove('swap'); },180); }
 function step(d){ lbI=(lbI+d+lbList.length)%lbList.length; showLb(); }
 function closeLb(){ lb.classList.remove('open'); document.body.style.overflow=''; if(lastFocus) lastFocus.focus(); }
 lb.querySelector('.x').onclick=closeLb; lb.querySelector('.pv').onclick=()=>step(-1); lb.querySelector('.nx').onclick=()=>step(1);
@@ -474,11 +711,51 @@ document.getElementById('quote').addEventListener('submit',e=>{
 });
 document.getElementById('yr').textContent=new Date().getFullYear();
 
-/* Style picker */
-function setTheme(t){ document.documentElement.dataset.theme=t; document.querySelectorAll('.picker button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t)); try{localStorage.setItem('ts-style',t)}catch(e){} }
-document.querySelectorAll('.picker button').forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.t)));
-let startT='kraft'; try{ startT=new URLSearchParams(location.search).get('style')||localStorage.getItem('ts-style')||'kraft'; }catch(e){}
-setTheme(['kraft','heritage','cards','minimal'].includes(startT)?startT:'kraft');
+/* Mobile section bar: highlight where we are */
+const mlinks=[...document.querySelectorAll('.mnav a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ mlinks.forEach(a=>{ const on=a.getAttribute('href')==='#'+e.target.id; a.classList.toggle('on',on); if(on){ const bar=a.parentElement; bar.scrollTo({left:a.offsetLeft-(bar.clientWidth-a.offsetWidth)/2,behavior:'smooth'}); } }); } }),{rootMargin:'-45% 0px -50% 0px'});
+mlinks.forEach(a=>{ const t=document.querySelector(a.getAttribute('href')); if(t) io.observe(t); });
+
+/* Scroll reveal */
+['.sec-head','.cab-project','.cab-foot','.about-grid > div:first-child','.ct-grid > div:first-child','.more'].forEach(q=>document.querySelectorAll(q).forEach(el=>el.classList.add('rv')));
+['.latest-grid','.svc-grid','.cab-gallery','.cab-specs','.mat','.values','.details','.filters'].forEach(q=>document.querySelectorAll(q).forEach(el=>{ el.classList.add('stag'); [...el.children].forEach((c,i)=>c.style.setProperty('--i',Math.min(i,10))); }));
+const rio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); rio.unobserve(e.target); } }),{rootMargin:'0px 0px -10% 0px',threshold:.08});
+document.querySelectorAll('.rv,.stag').forEach(el=>rio.observe(el));
+
+/* Stats count up */
+const sio=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; sio.unobserve(e.target);
+  e.target.querySelectorAll('b[data-to]').forEach(b=>{ const to=+b.dataset.to, suf=b.dataset.suf||''; if(RM){ b.textContent=to+suf; return; }
+    const t0=performance.now(), dur=1500; const tick=t=>{ const p=Math.min(1,(t-t0)/dur), v=Math.round(to*(1-Math.pow(1-p,3))); b.textContent=v+(p===1?suf:''); if(p<1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); });
+}),{threshold:.4});
+document.querySelectorAll('.stats').forEach(el=>sio.observe(el));
+
+/* Header shrink + reading progress */
+const topEl=document.querySelector('.top'), prog=document.getElementById('progress');
+let ticking=false;
+addEventListener('scroll',()=>{ if(ticking) return; ticking=true; requestAnimationFrame(()=>{
+  const y=scrollY, h=document.documentElement.scrollHeight-innerHeight;
+  topEl.classList.toggle('scrolled', y>30); prog.style.transform=`scaleX(${h>0?y/h:0})`; ticking=false; }); },{passive:true});
+
+/* Workshop shutter intro: rolls up onto the signs lit at night, then day breaks */
+(function(){
+  const root=document.documentElement, sh=document.getElementById('shutter');
+  if(!root.classList.contains('intro')) return;
+  try{ sessionStorage.setItem('ts-intro','1'); }catch(e){}
+  let userTouched=false;
+  lights.addEventListener('click',()=>{ userTouched=true; },{once:true});
+  // start behind the shutter in night mode
+  mode='night'; heroEl.classList.add('night','boot'); lights.setAttribute('aria-pressed','true'); lights.querySelector('.lbl').textContent='Back to daylight'; paintHero();
+  const finish=()=>{ if(sh.classList.contains('done')) return; sh.classList.add('done'); root.classList.remove('intro');
+    setTimeout(()=>heroEl.classList.remove('boot'),1600);
+    setTimeout(()=>{ if(!userTouched && mode==='night') lights.click(); },4200); };
+  document.getElementById('skipIntro').addEventListener('click',finish);
+  sh.addEventListener('click',finish);
+  addEventListener('keydown',e=>{ if(e.key==='Escape'||e.key===' '||e.key==='Enter') finish(); },{once:true});
+  const start=()=>{ sh.classList.add('go'); sh.querySelector('.door').addEventListener('animationend',e=>{ if(e.animationName==='rollUp') finish(); }); setTimeout(finish,3200); };
+  if(document.readyState==='complete') setTimeout(start,500); else addEventListener('load',()=>setTimeout(start,400),{once:true});
+  setTimeout(start,2600); // don't wait forever on slow photos
+})();
+
 </script>
 </body>
 </html>
