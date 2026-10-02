@@ -3,8 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Team Signit — Signage and Portable Cabins, Bengaluru</title>
-<meta name="description" content="Team Signit makes building, pylon, reception, internal, wall graphics, project, parking, fire exit and braille signage, plus portable office cabins, from our workshop in Bengaluru.">
+<title>Team Signit — Signboard Manufacturer and Portable Office Cabins, Bengaluru</title>
+<meta name="description" content="Signboard manufacturer in Bengaluru for 32 years. Glow signboards, LED signs, name boards, steel and brass letters, pylons, reception walls, wayfinding, braille signage and fully fitted portable office cabins.">
+<link rel="canonical" href="https://teamsignit.in/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Team Signit">
+<meta property="og:title" content="Team Signit — Signage and portable office cabins, Bengaluru">
+<meta property="og:description" content="Signs and site offices, designed, made and installed by our own team in Bengaluru for 32 years.">
+<meta property="og:url" content="https://teamsignit.in/">
+<meta property="og:image" content="https://teamsignit.in/photos/project/project-01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2B2419">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Team Signit","description":"Signboard manufacturer and portable office cabin builder in Bengaluru.","url":"https://teamsignit.in/","logo":"https://teamsignit.in/assets/logo.png","image":"https://teamsignit.in/photos/project/project-01.jpg","telephone":"+91-98450-15675","email":"jagadish@teamsignit.in","address":{"@type":"PostalAddress","streetAddress":"#49, SLV Layout, Mysuru Road, Nayandahalli","addressLocality":"Bengaluru","addressRegion":"Karnataka","postalCode":"560039","addressCountry":"IN"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"17:00"}],"areaServed":"Bengaluru","sameAs":["https://www.linkedin.com/company/team-signit/","https://www.facebook.com/profile.php?id=61594794937961","https://share.google/jkS0CCDhxxTRsUNin"]}
+</script>
 <link rel="icon" href="assets/favicon.png">
 <script>(function(d){d.classList.add('js');var seen=false;try{seen=sessionStorage.getItem('ts-intro')==='1'}catch(e){}
 if(!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro');})(document.documentElement)</script>
@@ -96,13 +108,8 @@ button.ph:hover img{transform:scale(1.04)}
 .hero h1{font-size:clamp(38px,5.4vw,68px);font-weight:700;margin-bottom:20px}
 .hero .lead{font-size:17.5px;margin-bottom:28px}
 .hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
-.mosaic{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:230px 230px;gap:var(--gap)}
-.mosaic .ph:nth-child(1){grid-row:1/3}
-[data-theme="kraft"] .mosaic .ph:nth-child(2){transform:rotate(1.2deg)}
-[data-theme="kraft"] .mosaic .ph:nth-child(3){transform:rotate(-1deg)}
 .cap{position:absolute;left:0;bottom:0;right:0;padding:26px 12px 9px;font-size:12.5px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.62));text-align:left;pointer-events:none}
-@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.mosaic{grid-template-rows:170px 170px}}
-@media (max-width:520px){.mosaic{grid-template-columns:1fr 1fr;grid-template-rows:200px 140px 140px}.mosaic .ph:nth-child(1){grid-row:auto;grid-column:1/3}.mosaic .ph:nth-child(5){display:none}}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
 
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:48px}
 .stats div{padding:22px 18px;border-left:1px solid var(--line)}
@@ -250,14 +257,37 @@ html.js .stag.in > *{opacity:1;transform:none}
 /* hero headline */
 html.js .hero h1 .w{display:inline-block;animation:wordIn .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i) * 90ms + 150ms)}
 @keyframes wordIn{from{opacity:0;transform:translateY(.45em) rotate(2deg)}to{opacity:1;transform:none}}
-html.js .mosaic .ph{animation:popIn .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i) * 110ms + 350ms)}
 @keyframes popIn{from{opacity:0;transform:translateY(24px) scale(.97)}}
-.mosaic .ph img{position:absolute;inset:0;height:100%;opacity:0;transition:opacity 1.1s ease, transform .5s ease}
-.mosaic .ph img.on{opacity:1}
-.mosaic .ph:first-child img.on{animation:kenburns 7s ease-out both}
 @keyframes kenburns{from{transform:scale(1.001)}to{transform:scale(1.09)}}
-.mosaic .cap{transition:opacity .4s}
 
+/* hero stage: one big photo, same sign by day and at night */
+.stage{display:flex;flex-direction:column;gap:14px;min-width:0}
+html.js .stage{animation:popIn .9s cubic-bezier(.2,.7,.2,1) .35s both}
+.stage .frame{position:relative;display:block;width:100%;aspect-ratio:4/3;max-height:540px;padding:0;margin:0;border:var(--frame) solid var(--frame-col);background:#1a140e;box-shadow:var(--shadow);border-radius:var(--tile-radius);overflow:hidden;cursor:zoom-in}
+.stage .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s ease}
+.stage .frame img.on{opacity:1;animation:kenburns 7s ease-out both}
+.stage .cap{padding:40px 18px 14px}
+.stage .cap b{display:block;font-family:'Fraunces',serif;font-size:21px;font-weight:600;line-height:1.2}
+.stage .cap i{font-style:normal;font-size:13px;opacity:.9}
+.stage .badge{position:absolute;top:12px;left:12px;background:rgba(26,20,14,.74);color:#F2E7CE;font-size:12px;font-weight:600;padding:6px 11px;border-radius:99px;opacity:0;transition:opacity .4s;pointer-events:none}
+.stage .badge.show{opacity:1}
+.thumbs{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:3px 2px}
+.thumbs::-webkit-scrollbar{display:none}
+.thumbs button{flex:0 0 auto;width:76px;height:56px;padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;opacity:.55;transition:opacity .3s,border-color .3s;background:#1a140e;cursor:pointer}
+.thumbs button img{width:100%;height:100%;object-fit:cover;display:block}
+.thumbs button.on,.thumbs button:hover,.thumbs button:focus-visible{opacity:1}
+.thumbs button.on{border-color:var(--accent)}
+.hero.night .stage .frame{border-color:#2d241a}
+.hero.night .thumbs button.on{border-color:#F6B571}
+
+.hero .trust{margin-top:22px;font-size:13.5px;color:var(--muted);line-height:1.6}
+.hero .trust small{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:2px}
+.hero.night .trust{color:#BFB292}
+.hero.night .trust small{color:#F2A76A}
+.social .links{display:flex;flex-wrap:wrap;gap:8px 18px}
+.social .links a{display:inline-flex;align-items:center;gap:7px;min-height:44px}
+.social .links svg{width:18px;height:18px;flex:none}
+.details p.reply{font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:8px}
 /* day / night switch */
 .hero{transition:background-color .9s ease, color .9s ease;position:relative}
 .lights{margin-top:26px;display:inline-flex;align-items:center;gap:12px;background:transparent;border:none;padding:0;font-size:14.5px;font-weight:600;color:var(--ink)}
@@ -376,7 +406,7 @@ html.js.intro body{overflow:hidden}
 @keyframes spill{0%{height:0;opacity:0}30%{opacity:1}100%{height:100%;opacity:0}}
 .shutter.done{display:none!important}
 /* signs switch on behind the shutter */
-.hero.boot .mosaic .ph img.on{animation:signOn 1.4s steps(1,end) both}
+.hero.boot .stage .frame img.on{animation:signOn 1.4s steps(1,end) both}
 @keyframes signOn{0%{filter:brightness(.25)}12%{filter:brightness(1.1)}18%{filter:brightness(.35)}28%{filter:brightness(1)}36%{filter:brightness(.55)}46%,100%{filter:brightness(1)}}
 @media (prefers-reduced-motion:reduce){.shutter{display:none!important}}
 
@@ -464,11 +494,15 @@ div.cc{cursor:default;display:flex;flex-direction:column;background:var(--frame-
           <p class="lead">For 32 years we have designed, fabricated and installed signs for offices, tech parks, malls and project sites in Bengaluru and beyond — and built steel office cabins to go with them.</p>
           <div class="ctas">
             <a class="btn" href="#work">See all 160 photos</a>
-            <a class="btn ghost" href="#contact">Talk to us</a>
+            <a class="btn ghost" href="tel:+919845015675">Call 98450 15675</a>
           </div>
           <button class="lights" id="lights" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span class="lbl">See our signs at night</span></button>
+          <p class="trust"><small>Trusted by</small>Embassy · Brigade · Infosys · TTK · Fortius Infra · Aditya Birla</p>
         </div>
-        <div class="mosaic" id="mosaic"></div>
+        <div class="stage" id="stage">
+          <button type="button" class="frame" id="frame" aria-label="Open this photo full size"><span class="imgs"></span><span class="badge" id="pairBadge" aria-hidden="true"></span><span class="cap" id="heroCap"></span></button>
+          <div class="thumbs" id="thumbs" aria-label="Choose a photo"></div>
+        </div>
       </div>
       <div class="stats">
         <div><b data-to="32">32</b><span>years in the trade</span></div>
@@ -590,7 +624,7 @@ div.cc{cursor:default;display:flex;flex-direction:column;background:var(--frame-
       <div>
         <span class="tag">About us</span>
         <h2>Made in Bengaluru, for 32 years.</h2>
-        <p class="lead" style="margin-top:16px">Team Signit makes glow signboards, LED signs, metal, stainless steel and brass letters, wall graphics and full building façade signage, along with display boards for offices and schools.</p>
+        <p class="lead" style="margin-top:16px">Team Signit makes glow signboards, LED signs, name boards, metal, stainless steel and brass letters, wall graphics and full building façade signage, along with display and writing boards for offices and schools.</p>
         <p class="lead">We handle every job ourselves, from the first drawing to fixing the last letter on site — which is why big developers keep coming back to us.</p>
       </div>
       <div class="values">
@@ -623,9 +657,9 @@ div.cc{cursor:default;display:flex;flex-direction:column;background:var(--frame-
       <div class="details">
         <div><small>Call</small><a href="tel:+919845015675">+91 98450 15675</a></div>
         <div><small>Email</small><a href="mailto:jagadish@teamsignit.in">jagadish@teamsignit.in</a></div>
-        <div><small>Workshop</small><p>#49, SLV Layout, behind Nandagokula Hotel, Mysuru Road, Nayandahalli, Bengaluru 560039</p></div>
-        <div><small>Hours</small><p>Monday to Saturday</p></div>
-        <div class="social"><small>Follow us</small><p><a href="https://www.linkedin.com/company/team-signit/" target="_blank" rel="noopener">LinkedIn →</a></p></div>
+        <div><small>Workshop</small><p>#49, SLV Layout, behind Nandagokula Hotel, Mysuru Road, Nayandahalli, Bengaluru 560039</p><p><a href="https://share.google/jkS0CCDhxxTRsUNin" target="_blank" rel="noopener">Directions and reviews on Google →</a></p></div>
+        <div><small>Hours</small><p>Monday to Saturday, 9 AM to 5 PM</p><p class="reply">We reply to every enquiry within one working day.</p></div>
+        <div class="social"><small>Follow us</small><p class="links"><a href="https://www.linkedin.com/company/team-signit/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>LinkedIn</a><a href="https://www.facebook.com/profile.php?id=61594794937961" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M15 8h-1.5A2.5 2.5 0 0 0 11 10.5V21M8.5 13H15"/></svg>Facebook</a><a href="https://share.google/jkS0CCDhxxTRsUNin" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Google</a></p></div>
       </div>
     </div>
   </section>
@@ -633,7 +667,7 @@ div.cc{cursor:default;display:flex;flex-direction:column;background:var(--frame-
 
 <footer>
   <div class="band"><div class="wrap">Signage · Portable cabins · Site offices · Modular structures — made in Bengaluru for 32 years</div></div>
-  <div class="wrap"><span>© <span id="yr"></span> Team Signit, #49, SLV Layout, Mysuru Road, Bengaluru 560039</span><span class="fsoc"><a href="https://www.linkedin.com/company/team-signit/" target="_blank" rel="noopener">LinkedIn</a></span><span>GST 29AALFT6309E1ZY</span></div>
+  <div class="wrap"><span>© <span id="yr"></span> Team Signit, #49, SLV Layout, Mysuru Road, Bengaluru 560039</span><span class="fsoc"><a href="https://www.linkedin.com/company/team-signit/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.facebook.com/profile.php?id=61594794937961" target="_blank" rel="noopener">Facebook</a> · <a href="https://share.google/jkS0CCDhxxTRsUNin" target="_blank" rel="noopener">Google</a></span><span>GST 29AALFT6309E1ZY</span></div>
 </footer>
 
 <a class="wa-float" href="https://wa.me/919845015675" aria-label="Chat on WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
@@ -675,41 +709,58 @@ function bindTiles(root, list){
   root.querySelectorAll('.ph').forEach(b=>b.addEventListener('click',()=>openLb(list,+b.dataset.i)));
 }
 
-/* Hero mosaic: day and night sets */
-const P = f => PHOTOS.find(p=>p.f===`photos/${f}.jpg`);
-const HERO = [
-  {day:['project/project-09','project/project-11','project/project-07'], night:['project/project-01','project/project-12','project/project-06']},
-  {day:['building/building-04'], night:['building/building-01']},
-  {day:['pylon/pylon-02'], night:['pylon/pylon-01']},
-  {day:['building/building-05'], night:['building/building-03']},
-  {day:['building/building-12'], night:['building/building-02']},
-].map(t=>({day:t.day.map(P).filter(Boolean), night:t.night.map(P).filter(Boolean)}));
-const mosaic = document.getElementById('mosaic'), heroEl=document.getElementById('hero');
-let mode='day', slide=0;
-mosaic.innerHTML = HERO.map((t,i)=>`<button class="ph" style="--i:${i}" data-t="${i}" aria-label="Open photo">${
-  [...t.day.map((p,k)=>`<img src="${p.t}" alt="${esc(LABEL[p.c])} by Team Signit" data-m="day" data-k="${k}">`),
-   ...t.night.map((p,k)=>`<img src="${p.t}" alt="${esc(LABEL[p.c])} at night, by Team Signit" data-m="night" data-k="${k}">`)].join('')
-}<span class="cap"></span></button>`).join('');
-function paintHero(){
-  mosaic.querySelectorAll('.ph').forEach((b,i)=>{
-    const set=HERO[i][mode], k=i===0 ? slide%set.length : 0;
-    b.querySelectorAll('img').forEach(im=>im.classList.toggle('on', im.dataset.m===mode && +im.dataset.k===k));
-    b.querySelector('.cap').textContent = LABEL[set[k].c] + (mode==='night'?' · at night':'');
-  });
+/* Hero: one big photo at a time. Where we have the same sign by day and lit at night,
+   the switch lights up the exact sign on screen. */
+const P = f => PHOTOS.find(p=>p.f===`photos/${f}.jpg`) || (f.startsWith('hero/') ? {f:`photos/${f}.jpg`, t:`photos/hero/t/${f.slice(5)}.jpg`} : null);
+const SPOT = [
+  {n:'Fortius Origin', by:'Fortius Infra', day:'project/project-09', night:'project/project-01'},
+  {n:'Embassy TechVillage', day:'project/project-07', night:'hero/project-02'},
+  {n:'Embassy TechSquare', day:'project/project-10', night:'hero/project-05'},
+  {n:'Alpha pylon', by:'Embassy TechSquare', day:'pylon/pylon-11', night:'hero/pylon-01'},
+  {n:'Chakkra Grand', night:'building/building-01'},
+  {n:'Bonito Designs', day:'building/building-05'},
+  {n:'TTK Towers', night:'building/building-03'},
+  {n:'Ascent', day:'building/building-12'},
+  {n:'Mi Home', night:'building/building-02'},
+  {n:'Esprit', night:'building/building-07'},
+].map(x=>({...x, day:x.day&&P(x.day), night:x.night&&P(x.night)})).filter(x=>x.day||x.night);
+const heroEl=document.getElementById('hero'), frame=document.getElementById('frame'), thumbsEl=document.getElementById('thumbs');
+const capEl=document.getElementById('heroCap'), badge=document.getElementById('pairBadge');
+let mode='day', cur=0;
+const spotList=()=>SPOT.filter(x=>x[mode]);
+frame.querySelector('.imgs').innerHTML = SPOT.flatMap((x,i)=>['day','night'].filter(m=>x[m]).map(m=>
+  `<img data-src="${x[m].f}" alt="${esc(x.n)}${m==='night'?' lit at night':''}, signage by Team Signit" data-s="${i}" data-m="${m}">`)).join('');
+const load = im => { if(im && !im.getAttribute('src')) im.src = im.dataset.src; };
+const imgFor = (i,m) => frame.querySelector(`img[data-s="${i}"][data-m="${m}"]`);
+function paintThumbs(){
+  thumbsEl.innerHTML = spotList().map(x=>`<button type="button" data-s="${SPOT.indexOf(x)}" aria-label="Show ${esc(x.n)}"><img src="${x[mode].t}" alt="" loading="lazy"></button>`).join('');
 }
-paintHero();
-mosaic.addEventListener('click',e=>{ const b=e.target.closest('.ph'); if(!b) return;
-  const list=HERO.flatMap(t=>t[mode]); const i=+b.dataset.t; const cur=HERO[i][mode][i===0?slide%HERO[0][mode].length:0];
-  openLb(list, list.indexOf(cur)); });
+function paintHero(){
+  const x=SPOT[cur], paired=!!(x.day&&x.night);
+  frame.querySelectorAll('img').forEach(im=>{ const on=+im.dataset.s===cur && im.dataset.m===mode; if(on) load(im); im.classList.toggle('on',on); });
+  const L=spotList(), nx=L[(L.indexOf(x)+1)%L.length]; load(imgFor(SPOT.indexOf(nx),mode));
+  if(paired) load(imgFor(cur, mode==='day'?'night':'day'));
+  capEl.innerHTML = `<b>${esc(x.n)}</b><i>${[x.by, paired?(mode==='night'?'Lit at night':'By day'):''].filter(Boolean).map(esc).join(' · ')}</i>`;
+  badge.textContent = mode==='night' ? 'Same sign, lit up' : 'Same sign by day. Flip the switch';
+  badge.classList.toggle('show', paired);
+  thumbsEl.querySelectorAll('button').forEach(b=>{ const on=+b.dataset.s===cur; b.classList.toggle('on',on); if(on) b.setAttribute('aria-current','true'); else b.removeAttribute('aria-current'); });
+}
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(!RM) setInterval(()=>{ if(document.hidden) return; slide++; paintHero(); }, 5200);
+let timer=null, paused=false;
+function restart(){ clearInterval(timer); if(RM) return;
+  timer=setInterval(()=>{ if(document.hidden||paused) return; const L=spotList(); cur=SPOT.indexOf(L[(L.indexOf(SPOT[cur])+1)%L.length]); paintHero(); }, 5200); }
+thumbsEl.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; cur=+b.dataset.s; paintHero(); restart(); });
+frame.addEventListener('click',()=>{ const L=spotList(); openLb(L.map(x=>x[mode]), L.indexOf(SPOT[cur])); });
+frame.addEventListener('mouseenter',()=>{ paused=true; }); frame.addEventListener('mouseleave',()=>{ paused=false; });
+paintThumbs(); paintHero(); restart();
 const lights=document.getElementById('lights');
 lights.addEventListener('click',()=>{
-  mode = mode==='day' ? 'night' : 'day'; slide=0;
+  mode = mode==='day' ? 'night' : 'day';
+  if(!SPOT[cur][mode]) cur=SPOT.indexOf(spotList()[0]);
   heroEl.classList.toggle('night', mode==='night');
   lights.setAttribute('aria-pressed', mode==='night');
   lights.querySelector('.lbl').textContent = mode==='night' ? 'Back to daylight' : 'See our signs at night';
-  paintHero();
+  paintThumbs(); paintHero(); restart();
 });
 /* headline words */
 (()=>{ const h=document.querySelector('.hero h1'); h.innerHTML=h.textContent.split(' ').map((w,i)=>`<span class="w" style="--i:${i}">${w}</span>`).join(' '); })();
@@ -829,7 +880,7 @@ addEventListener('scroll',()=>{ if(ticking) return; ticking=true; requestAnimati
   let userTouched=false;
   lights.addEventListener('click',()=>{ userTouched=true; },{once:true});
   // start behind the shutter in night mode
-  mode='night'; heroEl.classList.add('night','boot'); lights.setAttribute('aria-pressed','true'); lights.querySelector('.lbl').textContent='Back to daylight'; paintHero();
+  mode='night'; heroEl.classList.add('night','boot'); lights.setAttribute('aria-pressed','true'); lights.querySelector('.lbl').textContent='Back to daylight'; paintThumbs(); paintHero();
   const finish=()=>{ if(sh.classList.contains('done')) return; sh.classList.add('done'); root.classList.remove('intro');
     setTimeout(()=>heroEl.classList.remove('boot'),1600);
     setTimeout(()=>{ if(!userTouched && mode==='night') lights.click(); },4200); };
